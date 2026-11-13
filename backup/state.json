@@ -10,6 +10,7 @@
   "isaac": "mika",
   "mollie": "yisroel",
   "nesya": "chana",
+  "noa": "mollie",
   "rocky": "nesya",
   "shaina": "noa",
   "shalom": "rocky"
@@ -728,18 +729,28 @@
   }
  ],
  "lastShow": {
-  "at": 1794532473695,
-  "g": "bella",
+  "at": 1794575049583,
+  "g": "noa",
   "names": [
    "Mollie",
    "Ari",
    "Shalom",
    "Shaina",
-   "Bailey"
+   "Bella"
   ],
-  "r": "bailey"
+  "r": "mollie"
  },
  "log": [
+  {
+   "msg": "\ud83c\udfa1 Noa drew Mollie!",
+   "t": "2026-11-13T13:04:09.583Z",
+   "who": "Live draw"
+  },
+  {
+   "msg": "\ud83d\ude4b Noa joined the draw line",
+   "t": "2026-11-13T13:04:07.667Z",
+   "who": "Ari"
+  },
   {
    "msg": "Updated ages: Bella 6 months, Chana 4",
    "t": "2026-11-13T01:53:47.814396Z",
@@ -978,8 +989,8 @@
  ],
  "openingDate": "",
  "queue": [],
- "rev": 68,
+ "rev": 70,
  "schema": 2,
  "spinsOpenAt": "2026-11-13T01:00:00.000Z",
- "updatedAt": "2026-11-13T01:53:47.814396Z"
+ "updatedAt": "2026-11-13T13:04:09.583Z"
 }
