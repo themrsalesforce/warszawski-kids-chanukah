@@ -78,7 +78,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sky)}
 .prof{text-align:center;color:#fff;padding:18px 0 4px}
 .prof h1{font-family:Grandstander,sans-serif;font-weight:900;font-size:40px;margin:10px 0 0}
 .prof .age{color:#c9d8ff;font-size:17px}
-.back{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:10px 0;background:linear-gradient(var(--navy) 70%,transparent)}
+.back{padding-right:56px!important;position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:10px 0;background:linear-gradient(var(--navy) 70%,transparent)}
 .back button{border:0;background:rgba(255,255,255,.14);color:#fff;font:600 15px Fredoka,sans-serif;padding:9px 14px;border-radius:99px;cursor:pointer}
 .ideas{display:grid;gap:10px}
 .idea{display:flex;gap:12px;background:#f6f8fd;border-radius:16px;padding:10px;align-items:flex-start}
@@ -131,6 +131,25 @@ details.add summary::-webkit-details-marker{display:none}
 .open button.ch{margin-top:10px;border:0;background:rgba(255,255,255,.22);color:inherit;font:600 13px Fredoka,sans-serif;padding:7px 14px;border-radius:99px;cursor:pointer}
 .open .ed{display:none;gap:8px;margin-top:10px;justify-content:center}.open.editing .ed{display:flex}
 .open .ed input{max-width:180px;padding:8px}
+.gear{position:fixed;top:calc(10px + env(safe-area-inset-top));right:12px;z-index:12;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:20px;cursor:pointer;backdrop-filter:blur(6px)}
+.drawcard{background:linear-gradient(160deg,#fff 0%,#eef4ff 100%)}
+.drawcard .chips .chip{background:#fff;border:2px dashed #b9c8ea}
+.drawcard .chip.done{opacity:.45;border-style:solid}
+.bigbtn{display:block;width:100%;font-size:20px;padding:16px;border-radius:18px}
+.wheelbox{position:relative;width:min(340px,88vw);margin:6px auto 0}
+.wheelbox svg{width:100%;height:auto;display:block;filter:drop-shadow(0 10px 0 rgba(0,0,0,.25))}
+.pointer{position:absolute;left:50%;top:-14px;transform:translateX(-50%);font-size:40px;z-index:2;filter:drop-shadow(0 3px 0 rgba(0,0,0,.3))}
+.hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:22%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3c4,#ffc93c 55%,#d39b00);display:grid;place-items:center;font-size:clamp(22px,7vw,34px);box-shadow:0 4px 0 #a67700}
+.drawhead{color:#fff;text-align:center;padding:8px 0 4px}
+.drawhead h1{font-family:Grandstander,sans-serif;font-weight:900;font-size:30px;margin:6px 0 0}
+.drawhead p{color:#c9d8ff;margin:4px 0 0}
+.status-line{color:#fff;text-align:center;font-family:Grandstander,sans-serif;font-weight:800;font-size:22px;min-height:32px;margin:14px 0 6px}
+.reveal{text-align:center;animation:pop .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+.reveal .av.lg{width:110px;height:110px;font-size:48px}
+.reveal h2{justify-content:center;font-size:30px!important}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:30}
+.sheet input.code{font-size:28px;letter-spacing:10px;text-align:center}
 .filter{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:6px}
 .filter button{border:0;border-radius:99px;padding:6px 12px;font:600 13px Fredoka,sans-serif;background:#eef2fa;color:var(--ink);white-space:nowrap;cursor:pointer}
 .filter button.on{background:var(--navy);color:#fff}
@@ -139,8 +158,11 @@ details.add summary::-webkit-details-marker{display:none}
 <body>
 <canvas id="snow"></canvas>
 <div class="wrap" id="app"><div class="hero" style="color:#fff;text-align:center;padding-top:80px">Lighting the candles… 🕎</div></div>
+<button class="gear" onclick="go('settings')" aria-label="Settings">⚙️</button>
+<canvas id="confetti"></canvas>
 <nav class="nav" id="nav"></nav>
 <div class="toast" id="toast"></div>
+<script src="draw.js"></script>
 <script>
 const DATA_URL='https://textdb.dev/api/data/wkc-847f82d92bbd410787b5a9eaea59feac';
 const BACKUP_URL='backup/state.json';
@@ -163,8 +185,9 @@ function av(k,cls=''){if(!k)return`<span class="av ${cls}" style="background:#cb
 function giverOf(id){return Object.keys(S.assign).filter(g=>S.assign[g]===id)}
 function excluded(a,b){return a===b||S.exclusions.some(g=>g.includes(a)&&g.includes(b))}
 function problems(st=S){const out=[];const ids=st.kids.map(k=>k.id);const name=id=>(st.kids.find(k=>k.id===id)||{name:id}).name;
- for(const id of ids){const r=st.assign[id];if(!r||!ids.includes(r))out.push(`${name(id)} isn't buying for anyone yet`);else if(r===id)out.push(`${name(id)} is buying for themself`);else if(st.exclusions.some(g=>g.includes(id)&&g.includes(r)))out.push(`${name(id)} → ${name(r)} breaks a sibling rule`)}
- for(const id of ids){const n=ids.filter(g=>st.assign[g]===id).length;if(n===0)out.push(`Nobody is buying for ${name(id)}`);if(n>1)out.push(`${name(id)} is getting ${n} gifts`)}
+ for(const id of ids){const r=st.assign[id];if(!r)continue;if(!ids.includes(r))out.push(`${name(id)} is buying for someone who left`);else if(r===id)out.push(`${name(id)} is buying for themself`);else if(st.exclusions.some(g=>g.includes(id)&&g.includes(r)))out.push(`${name(id)} → ${name(r)} breaks a sibling rule`)}
+ for(const id of ids){const n=ids.filter(g=>st.assign[g]===id).length;if(n>1)out.push(`${name(id)} is getting ${n} gifts`)}
+ if(!out.length&&Draw.undrawn(st).length&&!Draw.feasible(st))out.push('The kids still to draw can\'t all get a valid name. Try a swap, or reset the draws in ⚙️ settings.');
  return out}
 // ---------- storage ----------
 async function fetchRemote(){const r=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const t=(await r.text()).trim();if(!t)return null;const j=JSON.parse(t);if(!j||j.app!=='wkc')throw new Error('bad data');return migrate(j)}
@@ -198,17 +221,18 @@ function openBanner(){const d=S.openingDate,n=daysTo(d);const isGo=d&&n<=0;
  <button class="ch" onclick="document.getElementById('openb').classList.toggle('editing')">📅 ${d?'Change':'Set'} opening day</button>
  <div class="ed"><input type="date" id="odate" value="${esc(d||'')}"><button class="btn small" onclick="setOpening()">Save</button>${d?`<button class="btn small ghost" onclick="setOpening(true)">Clear</button>`:''}</div></div>`}
 function renderSync(){const el=$('#sync');if(!el)return;el.className='sync'+(readOnly?' off':'');el.innerHTML=readOnly?'<i></i>Showing the last saved copy, live sync is reconnecting…':`<i></i>Live: everyone sees changes${lastSync?' · synced '+lastSync.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}):''}`}
-function nav(){const v=route().v;$('#nav').innerHTML=[['home','🕎','Home'],['list','🎁','All gifts'],['manage','🎲','Swap & draw'],['log','📜','Activity']].map(([k,e,l])=>`<button class="${v===k?'on':''}" onclick="go('${k==='home'?'':k}')"><span class="e">${e}</span>${l}</button>`).join('')}
+function nav(){const v=route().v;$('#nav').innerHTML=[['home','🕎','Home'],['list','🎁','All gifts'],['manage','🔀','Swap & fix'],['log','📜','Activity']].map(([k,e,l])=>`<button class="${v===k?'on':''}" onclick="go('${k==='home'?'':k}')"><span class="e">${e}</span>${l}</button>`).join('')}
 function progressCard(){const n=S.kids.length,s=S.kids.filter(k=>k.sent).length,r=S.kids.filter(k=>k.received).length;
  return`<div class="card progress"><h2>📮 Gift progress</h2><div class="big" style="font-size:22px">✅ ${s} of ${n} sent · 📦 ${r} of ${n} received</div>
  <div class="muted" style="margin:8px 0 4px">Sent</div><div class="bar"><i style="width:${n?s/n*100:0}%;background:var(--green)"></i></div>
  <div class="muted" style="margin:8px 0 4px">Received</div><div class="bar"><i style="width:${n?r/n*100:0}%;background:var(--blue)"></i></div></div>`}
 function warnBox(){const p=problems();return p.length?`<div class="warn"><b>⚠️ Heads up, the draw needs fixing</b>${p.map(esc).join('<br>')}<div style="margin-top:8px"><button class="btn small" onclick="go('manage')">Fix it</button></div></div>`:''}
-function pairRow(k){const r=kid(S.assign[k.id]);return`<div class="pair"><button class="who" onclick="go('kid/${esc(k.id)}')">${av(k)}<span style="min-width:0"><b>${esc(k.name)}</b><em>${esc(ageTxt(k))}</em></span></button><span class="arrow">🎁➜</span><button class="who" ${r?`onclick="go('kid/${esc(r.id)}')"`:''}>${av(r)}<span style="min-width:0"><b>${r?esc(r.name):'Nobody yet'}</b><em>${r?esc(ageTxt(r)):''}</em></span></button>${toggles(k)}</div>`}
+function pairRow(k){const r=kid(S.assign[k.id]);return`<div class="pair"><button class="who" onclick="go('kid/${esc(k.id)}')">${av(k)}<span style="min-width:0"><b>${esc(k.name)}</b><em>${esc(ageTxt(k))}</em></span></button><span class="arrow">🎁➜</span>${r?`<button class="who" onclick="go('kid/${esc(r.id)}')">${av(r)}<span style="min-width:0"><b>${esc(r.name)}</b><em>${esc(ageTxt(r))}</em></span></button>`:`<button class="btn small" style="flex:1" onclick="go('draw/${esc(k.id)}')">🎡 Draw!</button>`}${r?toggles(k):''}</div>`}
 function viewHome(){return`<header class="hero">${menorah}<h1><span class="k">Warszawski Kids</span><br><span class="c">Chanukah</span></h1><p>🕎 One gift each · everyone gets one 🎄</p><div id="sync" class="sync"></div></header>
  ${openBanner()}
  ${!me()?`<div class="card"><h2>👋 Who's here?</h2><p class="muted" style="margin:0 0 8px">Optional: your name shows next to your changes in the activity list.</p><div class="row" style="flex-wrap:nowrap"><input id="myname" placeholder="e.g. Aunt Shoshy"><button class="btn" onclick="setName()">Save</button></div></div>`:''}
  ${warnBox()}
+ ${drawCard()}
  <div class="card"><h2>👆 Tap a kid</h2><p class="muted" style="margin:-4px 0 12px">See who they give to, who they get from, and gift ideas.</p><div class="chips">${S.kids.map(k=>`<button class="chip" onclick="go('kid/${esc(k.id)}')">${av(k)}<div class="nm">${esc(k.name)}</div><div class="ag">${esc(ageTxt(k))}</div></button>`).join('')}</div></div>
  ${progressCard()}
  <div class="card"><h2>🎁 Who buys for who</h2><p class="muted" style="margin:-4px 0 4px">Giver's family taps ✅ Sent when it's mailed. Receiver's family taps 📦 Received when it arrives.</p>${S.kids.map(pairRow).join('')}</div>
@@ -221,8 +245,8 @@ function viewKid(id){const k=kid(id);if(!k)return`<div class="back"><button oncl
  return`<div class="back"><button onclick="history.length>1?history.back():go('')">← Back</button><button onclick="go('')">🕎 Home</button></div>
  <div class="prof">${av(k,'lg')}<h1>${esc(k.name)}</h1><div class="age">${esc(ageTxt(k))}${/mo/i.test(k.age||'')?' · Mom & Dad shop for '+esc(k.name):''}</div></div>
  <div class="links" style="margin-top:14px">
-  <button class="link give" ${r?`onclick="go('kid/${esc(r.id)}')"`:''}><small>🎁 ${esc(k.name)} gives to</small><span class="who2">${av(r)}<span><b>${r?esc(r.name):'Nobody yet'}</b><em>${r?esc(ageTxt(r)):'Pick below'}</em></span></span>${r?`<span class="st"><span>${k.sent?'✅ Sent':'⏳ Not sent'}</span><span>${k.received?'📦 Received':'Not received'}</span></span>`:''}</button>
-  <button class="link get" ${g?`onclick="go('kid/${esc(g.id)}')"`:''}><small>🎉 ${esc(k.name)} gets from</small><span class="who2">${av(g)}<span><b>${g?esc(g.name)+(gs.length>1?' +'+(gs.length-1):''):'Nobody yet'}</b><em>${g?esc(ageTxt(g)):'Needs fixing'}</em></span></span>${g?`<span class="st"><span>${g.sent?'✅ Sent':'⏳ Not sent'}</span><span>${g.received?'📦 Received':'Not received'}</span></span>`:''}</button>
+  <button class="link give" onclick="go('${r?'kid/'+esc(r.id):'draw/'+esc(k.id)}')"><small>🎁 ${esc(k.name)} gives to</small><span class="who2">${av(r)}<span><b>${r?esc(r.name):'🎡 Draw!'}</b><em>${r?esc(ageTxt(r)):'Not drawn yet, tap to spin'}</em></span></span>${r?`<span class="st"><span>${k.sent?'✅ Sent':'⏳ Not sent'}</span><span>${k.received?'📦 Received':'Not received'}</span></span>`:''}</button>
+  <button class="link get" ${g?`onclick="go('kid/${esc(g.id)}')"`:''}><small>🎉 ${esc(k.name)} gets from</small><span class="who2">${av(g)}<span><b>${g?esc(g.name)+(gs.length>1?' +'+(gs.length-1):''):'🤫 Not yet'}</b><em>${g?esc(ageTxt(g)):'Waiting for the draw'}</em></span></span>${g?`<span class="st"><span>${g.sent?'✅ Sent':'⏳ Not sent'}</span><span>${g.received?'📦 Received':'Not received'}</span></span>`:''}</button>
  </div>
  ${problems().filter(p=>p.includes(k.name)).length?`<div class="warn"><b>⚠️ Needs fixing</b>${problems().filter(p=>p.includes(k.name)).map(esc).join('<br>')}</div>`:''}
  ${openBanner()}
@@ -250,20 +274,82 @@ function viewKid(id){const k=kid(id);if(!k)return`<div class="back"><button oncl
   <div class="row" style="margin-top:10px;justify-content:space-between"><button class="btn small" onclick="editKid('${esc(k.id)}')">Save</button><button class="btn small red" onclick="removeKid('${esc(k.id)}')">Remove kid</button></div></div>`}
 function viewManage(){const opts=sel=>S.kids.map(x=>`<option value="${esc(x.id)}" ${sel===x.id?'selected':''}>${esc(x.name)} → ${esc((kid(S.assign[x.id])||{name:'nobody'}).name)}</option>`).join('');
  const p=problems();
- return`<header class="hero"><h1 style="font-size:34px"><span class="c">Swap & draw</span></h1><div id="sync" class="sync"></div></header>
- ${p.length?warnBox():`<div class="ok">✅ All good: ${S.kids.length} kids, everyone gives one and gets one, no sibling pairs.</div>`}
+ return`<header class="hero"><h1 style="font-size:34px"><span class="c">Swap & fix</span></h1><div id="sync" class="sync"></div></header>
+ ${p.length?warnBox():`<div class="ok">✅ All good: ${Object.keys(S.assign).filter(g=>S.assign[g]).length} of ${S.kids.length} kids have drawn, no sibling pairs, nobody gets two.</div>`}
  <div class="card"><h2>🔀 Swap two buyers</h2><p class="muted" style="margin:-4px 0 6px">The two kids trade who they're buying for.</p>
   <label class="f">First kid</label><select id="sw-a">${opts(S.kids[0]&&S.kids[0].id)}</select><label class="f">Second kid</label><select id="sw-b">${opts(S.kids[1]&&S.kids[1].id)}</select>
   <div id="sw-prev" class="muted" style="margin:8px 0"></div><button class="btn" onclick="doSwap()">Swap them</button></div>
- <div class="card"><h2>🎲 New random draw</h2><p class="muted" style="margin:-4px 0 10px">Shuffles everyone into one big gift circle that follows the sibling rules. Sent/Received and notes reset; wish lists and ideas stay.</p><button class="btn red" onclick="redraw()">Re-draw everyone</button></div>
+ <div class="card"><h2>⚙️ Reset or re-draw</h2><p class="muted" style="margin:-4px 0 10px">Resetting all draws or re-drawing everyone needs the organizer passcode.</p><button class="btn ghost" onclick="go('settings')">Open settings</button></div>
  <div class="card"><h2>👨‍👩‍👧 Sibling rules</h2><p class="muted" style="margin:-4px 0 6px">Kids in the same group never draw each other.</p>
   ${S.exclusions.length?S.exclusions.map((g,i)=>`<div class="excl">${g.map(id=>`<span class="tag">${esc((kid(id)||{name:id}).name)}</span>`).join('')}<button class="btn small ghost" style="margin-left:auto" onclick="delGroup(${i})">Remove</button></div>`).join(''):'<div class="empty">No rules yet</div>'}
   <details class="add"><summary>＋ Add a sibling group</summary><div class="checks">${S.kids.map(k=>`<label><input type="checkbox" value="${esc(k.id)}" class="gchk">${esc(k.name)}</label>`).join('')}</div><button class="btn green small" onclick="addGroup()">Add group</button></details></div>
  <div class="card"><h2>➕ Add a kid</h2><div class="row" style="flex-wrap:nowrap"><div style="flex:2"><label class="f">Name</label><input id="n-name" placeholder="Name"></div><div style="flex:1"><label class="f">Age</label><input id="n-age" placeholder="5"></div></div>
-  <p class="muted">They'll be added into the gift circle automatically.</p><button class="btn green" onclick="addKid()">Add kid</button></div>`}
+  <p class="muted">They'll show up on the draw list (or get slotted in if everyone already drew).</p><button class="btn green" onclick="addKid()">Add kid</button></div>`}
 function viewLog(){return`<header class="hero"><h1 style="font-size:34px"><span class="c">Activity</span></h1><div id="sync" class="sync"></div></header><div class="card"><h2>📜 Recent changes</h2><div class="log">${(S.log||[]).map(l=>`<div><time>${new Date(l.t).toLocaleString([], {weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})} · ${esc(l.who)}</time>${esc(l.msg)}</div>`).join('')||'<div class="empty">No changes yet</div>'}</div></div>`}
+let SPIN=false;
+function drawCard(){const n=S.kids.length,left=Draw.undrawn(S);const done=n-left.length;
+ if(!left.length)return`<div class="card drawcard"><h2>🎉 Everyone has drawn!</h2><p class="muted" style="margin:0">All ${n} kids know who they're giving to. Tap a kid to see.</p></div>`;
+ return`<div class="card drawcard"><h2>🎡 Draw time!</h2><p class="muted" style="margin:-4px 0 10px">${done} of ${n} drawn. Who's drawing? Tap your kid and spin the wheel!</p>
+ <div class="chips">${S.kids.map(k=>{const d=!left.includes(k.id);return`<button class="chip ${d?'done':''}" onclick="go('${d?'kid':'draw'}/${esc(k.id)}')">${av(k)}<div class="nm">${esc(k.name)}</div><div class="ag">${d?'✅ drawn':'🎡 tap to draw'}</div></button>`}).join('')}</div></div>`}
+const WCOL=['#2f6fde','#e5383b','#1f9d55','#ffc93c','#8fc3ff','#c0392b','#e9eef7','#0f6e3b'];
+function wheelSVG(names){const n=names.length,R=150,c=160;let s=`<svg viewBox="0 0 320 320" id="wheel"><g id="wrot" style="transform-origin:160px 160px">`;
+ if(n===1){s+=`<circle cx="${c}" cy="${c}" r="${R}" fill="${WCOL[0]}"/><text x="${c}" y="${c-60}" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="22" fill="#fff">${esc(names[0])}</text>`}
+ else names.forEach((nm,i)=>{const a0=(i/n)*2*Math.PI-Math.PI/2,a1=((i+1)/n)*2*Math.PI-Math.PI/2;const x0=c+R*Math.cos(a0),y0=c+R*Math.sin(a0),x1=c+R*Math.cos(a1),y1=c+R*Math.sin(a1);const col=WCOL[i%WCOL.length];const dark=/#ffc93c|#8fc3ff|#e9eef7/.test(col);
+  const mid=(i+.5)/n*360-90;const fs=Math.max(11,Math.min(20,180/n+6));
+  s+=`<path d="M${c} ${c} L${x0} ${y0} A${R} ${R} 0 ${n<2?1:0} 1 ${x1} ${y1}Z" fill="${col}" stroke="#fff" stroke-width="2"/><text transform="rotate(${mid} ${c} ${c})" x="${c+R-12}" y="${c+fs/3}" text-anchor="end" font-family="Fredoka" font-weight="700" font-size="${fs}" fill="${dark?'#14213d':'#fff'}">${esc(nm)}</text>`});
+ s+=`</g><circle cx="${c}" cy="${c}" r="${R}" fill="none" stroke="#ffc93c" stroke-width="8"/>`;for(let i=0;i<24;i++){const a=i/24*2*Math.PI;s+=`<circle cx="${c+(R+1)*Math.cos(a)}" cy="${c+(R+1)*Math.sin(a)}" r="3" fill="${i%2?'#fff':'#e5383b'}"/>`}return s+'</svg>'}
+function viewDraw(id){const k=kid(id);if(!k)return`<div class="back"><button onclick="go('')">← Home</button></div><div class="card">Kid not found.</div>`;
+ const r=kid(S.assign[k.id]);
+ if(r)return`<div class="back"><button onclick="go('')">← Home</button></div>${revealHTML(k,r,false)}`;
+ const el=Draw.eligible(S,k.id).map(kid).filter(Boolean);
+ return`<div class="back"><button onclick="go('')">← Home</button></div>
+ <div class="drawhead">${av(k,'lg')}<h1>${esc(k.name)}'s draw</h1><p>${/mo/i.test(k.age||'')?'Mom & Dad spin for '+esc(k.name)+' 💙':'Ready? Tap SPIN and see who '+esc(k.name)+' gives to!'}</p></div>
+ <div class="status-line" id="sline">🕎 ${el.length} names on the wheel 🎄</div>
+ <div class="wheelbox"><div class="pointer">🔻</div>${wheelSVG(el.map(x=>x.name))}<div class="hub">🕎</div></div>
+ <div style="margin:20px 0"><button class="btn red bigbtn" id="spinbtn" onclick="spin('${esc(k.id)}')">🎡 SPIN!</button></div>
+ <p class="muted" style="color:#9fb3e6;text-align:center">Siblings aren't on the wheel. The result saves for everyone right away.</p>`}
+function revealHTML(k,r,fresh){return`<div class="card reveal"><div style="font-size:15px;color:var(--muted);font-weight:600">${fresh?'🥁 And the name is…':esc(k.name)+' already drew'}</div>${av(r,'lg')}<h2>${esc(r.name)}!</h2><p style="margin:0 0 6px;font-size:17px"><b>${esc(k.name)}</b> is giving a gift to <b>${esc(r.name)}</b> (${esc(ageTxt(r))}) 🎁</p>
+ <p class="muted">Gifts get mailed, ~$20. Check out ideas for ${esc(r.name)}!</p>
+ <div class="row" style="justify-content:center;margin-top:10px"><button class="btn green" onclick="go('kid/${esc(r.id)}')">💡 Gift ideas for ${esc(r.name)}</button><button class="btn ghost" onclick="go('')">🕎 Home</button></div></div>`}
+let AC=null;function beep(f,d,t='square',v=.05){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=t;o.frequency.value=f;g.gain.value=v;g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
+async function spin(gid){if(SPIN)return;const btn=$('#spinbtn');btn.disabled=true;btn.textContent='🥁 Spinning…';
+ const names=Draw.eligible(S,gid).map(id=>kid(id).name);let chosen=null,err=null;
+ // pick on the freshest data and save immediately
+ try{let cur=await fetchRemote()||S;if(cur.assign[gid]){S=cur;SPIN=false;render();toast('Already drawn!');return}
+  chosen=Draw.pick(cur,gid);if(!chosen)throw new Error('stuck');
+  const nm=cur.kids.find(x=>x.id===gid).name,rn=cur.kids.find(x=>x.id===chosen).name;
+  cur.assign[gid]=chosen;const kk=cur.kids.find(x=>x.id===gid);kk.sent=false;kk.received=false;
+  cur.log=cur.log||[];cur.log.unshift({t:new Date().toISOString(),who:me()||'Someone',msg:`🎡 ${nm} drew ${rn}!`});cur.log=cur.log.slice(0,120);cur.rev=(cur.rev||0)+1;cur.updatedAt=new Date().toISOString();
+  await pushRemote(cur);S=cur;lastSync=new Date()}catch(e){err=e}
+ if(err){btn.disabled=false;btn.textContent='🎡 SPIN!';toast(err.message==='stuck'?'No valid name left, ask the organizer':'Could not save, check connection');return}
+ SPIN=true;const rn=kid(chosen).name;let idx=names.indexOf(rn);if(idx<0){idx=0}
+ const n=names.length,seg=360/n;const jitter=(Math.random()-.5)*seg*.6;const target=360*7+(360-(idx+.5)*seg)+jitter;
+ const g=$('#wrot'),sl=$('#sline');const T=6500,t0=performance.now();let lastSeg=-1;const msgs=['🥁 Spinning…','✨ Who will it be?','🕎 Slowing down…','🎄 Almost…','🤫 …'];
+ await new Promise(res=>{function f(now){const p=Math.min(1,(now-t0)/T);const e=1-Math.pow(1-p,4);const ang=target*e;g.style.transform=`rotate(${ang}deg)`;
+  const sIdx=Math.floor(((ang%360)+360)%360/seg);if(sIdx!==lastSeg){lastSeg=sIdx;beep(900+Math.random()*200,.04,'square',.03)}
+  sl.textContent=msgs[Math.min(msgs.length-1,Math.floor(p*msgs.length))];if(p<1)requestAnimationFrame(f);else res()}requestAnimationFrame(f)});
+ beep(523,.15,'triangle',.08);setTimeout(()=>beep(659,.15,'triangle',.08),150);setTimeout(()=>beep(784,.35,'triangle',.08),300);
+ sl.textContent=`🎉 ${rn}! 🎉`;confetti();await new Promise(r=>setTimeout(r,1300));SPIN=false;
+ const k=kid(gid),r=kid(chosen);$('#app').innerHTML=`<div class="back"><button onclick="go('')">← Home</button></div>${revealHTML(k,r,true)}`;nav();window.scrollTo(0,0)}
+function confetti(){const c=$('#confetti'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const E=['🎁','❄️','⭐','🕎','🎄','💙','🍩','🪙'];
+ const ps=Array.from({length:110},()=>({x:innerWidth/2,y:innerHeight*.45,vx:(Math.random()-.5)*14,vy:-Math.random()*14-4,r:Math.random()*6.28,vr:(Math.random()-.5)*.3,e:Math.random()<.35?E[Math.floor(Math.random()*E.length)]:null,col:WCOL[Math.floor(Math.random()*WCOL.length)],s:Math.random()*8+6}));
+ const t0=performance.now();(function f(now){x.clearRect(0,0,c.width,c.height);for(const p of ps){p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.r);if(p.e){x.font=p.s*2.4+'px serif';x.fillText(p.e,0,0)}else{x.fillStyle=p.col;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2)}x.restore()}
+  if(now-t0<3500)requestAnimationFrame(f);else x.clearRect(0,0,c.width,c.height)})(t0)}
+const CODE_H='1142e030a0b5e72ff7675440d5b9ce1346a8b355aae55765666d6d529406b7b5';
+async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function checkCode(){const el=$('#pcode');const v=(el&&el.value||'').trim();if(v&&await sha(v)===CODE_H)return true;toast(v?'Wrong passcode':'Enter the organizer passcode');if(el){el.value='';el.focus()}return false}
+function viewSettings(){const n=Object.keys(S.assign).filter(g=>S.assign[g]).length;return`<div class="back"><button onclick="history.length>1?history.back():go('')">← Back</button></div>
+ <header class="hero" style="padding-top:0"><h1 style="font-size:34px"><span class="c">⚙️ Settings</span></h1></header>
+ <div class="card sheet"><h2>🔐 Organizer only</h2><p class="muted" style="margin:-4px 0 8px">${n} of ${S.kids.length} kids have drawn.</p>
+  <label class="f">Passcode</label><input id="pcode" class="code" type="password" inputmode="numeric" autocomplete="off" placeholder="••••">
+  <div style="display:grid;gap:12px;margin-top:14px">
+   <button class="btn red" onclick="resetDraws()">🔄 Reset all draws</button>
+   <p class="muted" style="margin:-4px 0 0">Clears every draw and the Sent/Received marks. Kids, ages, sibling rules, wish lists and gift ideas stay.</p>
+   <button class="btn ghost" onclick="redraw()">🎲 Re-draw everyone at once (no wheel)</button></div></div>`}
+async function resetDraws(){if(!await checkCode())return;if(!confirm('Reset ALL draws? Everyone will need to spin again.'))return;
+ mutate(st=>{st.assign={};st.kids.forEach(k=>{k.sent=false;k.received=false;k.note=''})},'🔄 Reset all draws (everyone can spin again)');setTimeout(()=>go(''),400)}
 function render(){if(!S)return;const {v,id}=route();const app=$('#app');
- app.innerHTML=v==='kid'?viewKid(id):v==='list'?viewList():v==='manage'?viewManage():v==='log'?viewLog():viewHome();nav();renderSync();
+ if(SPIN)return;app.innerHTML=v==='kid'?viewKid(id):v==='draw'?viewDraw(id):v==='settings'?viewSettings():v==='list'?viewList():v==='manage'?viewManage():v==='log'?viewLog():viewHome();nav();renderSync();
  app.querySelectorAll('[data-sent]').forEach(b=>b.onclick=e=>{e.stopPropagation();toggleSent(b.dataset.sent)});app.querySelectorAll('[data-recv]').forEach(b=>b.onclick=e=>{e.stopPropagation();toggleRecv(b.dataset.recv)});
  if(v==='manage'){const upd=()=>{const a=$('#sw-a').value,b=$('#sw-b').value;$('#sw-prev').innerHTML=swapPreview(a,b)};$('#sw-a').onchange=upd;$('#sw-b').onchange=upd;upd()}}
 // ---------- actions ----------
@@ -288,7 +374,7 @@ function reassign(id){const nr=$('#newr').value;if(!nr||nr===S.assign[id])return
  if(after.length)msg+=`\n\n⚠️ Heads up:\n• `+after.join('\n• ');
  if(!confirm(msg+'\n\nGo ahead?'))return;
  mutate(st=>{const o=Object.keys(st.assign).find(g=>g!==id&&st.assign[g]===nr);const prev=st.assign[id];st.assign[id]=nr;if(o)st.assign[o]=prev;[id,o].forEach(q=>{const k=st.kids.find(z=>z.id===q);if(k){k.sent=false;k.received=false;k.note=''}})},`${kid(id).name} now buys for ${kid(nr).name}`+(other?` (${kid(other).name} now buys for ${(kid(old)||{name:'nobody'}).name})`:''))}
-function redraw(){if(!confirm('Re-draw EVERYONE? This replaces all current pairs and resets Sent/Received & notes.'))return;const a=makeDraw();if(!a){toast("Can't find a draw with these rules");return}
+async function redraw(){if(!await checkCode())return;if(!confirm('Re-draw EVERYONE at once? This replaces all draws and resets Sent/Received & notes.'))return;const a=makeDraw();if(!a){toast("Can't find a draw with these rules");return}
  mutate(st=>{st.assign=a;st.kids.forEach(k=>{k.sent=false;k.received=false;k.note=''})},'Re-drew everyone (new random gift circle)')}
 function editKid(id){const n=$('#e-name').value.trim().slice(0,40),a=$('#e-age').value.trim().slice(0,12);if(!n){toast('Name needed');return}const old=kid(id).name;mutate(st=>{const k=st.kids.find(q=>q.id===id);if(k){k.name=n;k.age=a}},`Edited ${old}${old!==n?' → '+n:''} (age ${a})`)}
 function removeKid(id){const k=kid(id);if(!confirm(`Remove ${k.name} from the exchange? We'll close the gap so the circle still works.`))return;
@@ -297,7 +383,7 @@ function addKid(){const n=$('#n-name').value.trim().slice(0,40),a=$('#n-age').va
  let id=n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'kid';while(kid(id))id+='-2';
  mutate(st=>{st.kids.push({id,name:n,age:a,sent:false,received:false,note:'',wishlist:'',giftIdeas:[]});
   // splice into the circle: find a giver g where g->id and id->r are allowed
-  const gs=shuffle(Object.keys(st.assign));const g=gs.find(x=>!excluded(x,id))||gs[0];if(g){st.assign[id]=st.assign[g];st.assign[g]=id}},`Added ${n}${a?' ('+a+')':''}`);toast('Added '+n)}
+  const allDrawn=st.kids.every(q=>q.id===id||st.assign[q.id]);if(allDrawn){const gs=shuffle(Object.keys(st.assign));const g=gs.find(x=>!excluded(x,id)&&!excluded(id,st.assign[x]));if(g){st.assign[id]=st.assign[g];st.assign[g]=id}}},`Added ${n}${a?' ('+a+')':''}`);toast('Added '+n)}
 function addGroup(){const ids=[...document.querySelectorAll('.gchk:checked')].map(c=>c.value);if(ids.length<2){toast('Pick at least 2 kids');return}
  mutate(st=>{st.exclusions.push(ids)},`Added sibling rule: ${ids.map(i=>kid(i).name).join(', ')}`)}
 function delGroup(i){const g=S.exclusions[i];if(!confirm('Remove this sibling rule?'))return;mutate(st=>{st.exclusions=st.exclusions.filter(x=>JSON.stringify(x)!==JSON.stringify(g))},`Removed sibling rule: ${g.map(i=>(kid(i)||{name:i}).name).join(', ')}`)}
