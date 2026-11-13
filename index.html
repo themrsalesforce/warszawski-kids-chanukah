@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1f4b">
+<meta name="robots" content="noindex,nofollow">
+<title>Warszawski Kids Chanukah</title>
+<meta property="og:title" content="Warszawski Kids Chanukah 🕎🎄">
+<meta property="og:description" content="Who's buying for who, gift status and ideas. Tap your kid!">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕎</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Grandstander:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1f4b;--navy2:#132d66;--blue:#2f6fde;--sky:#8fc3ff;--silver:#e9eef7;--gold:#ffc93c;--red:#e5383b;--green:#1f9d55;--ink:#14213d;--muted:#5b6785;--card:#fff;--r:20px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{font-family:Fredoka,system-ui,sans-serif;color:var(--ink);background:var(--navy);min-height:100vh;overflow-x:hidden}
+#snow{position:fixed;inset:0;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 14px calc(90px + env(safe-area-inset-bottom))}
+header.hero{color:#fff;text-align:center;padding:26px 6px 8px}
+.hero h1{font-family:Grandstander,Fredoka,sans-serif;font-weight:900;font-size:clamp(30px,9vw,46px);line-height:.98;margin:8px 0 6px;letter-spacing:.5px;text-shadow:0 3px 0 #06122e}
+.hero h1 .k{color:var(--gold)}
+.hero h1 .c{background:linear-gradient(90deg,#8fc3ff,#fff 45%,#ff8a8a 70%,#7be3a4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin:4px 0 0;color:#c9d8ff;font-size:15px}
+.menorah{width:min(260px,70vw);height:auto;display:block;margin:0 auto}
+.flame{transform-origin:50% 100%;animation:fl 1.4s ease-in-out infinite alternate}
+.flame:nth-child(2n){animation-delay:.3s}.flame:nth-child(3n){animation-delay:.7s}
+@keyframes fl{from{transform:scale(1,1)}to{transform:scale(.85,1.12)}}
+.card{background:var(--card);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:0 8px 0 rgba(0,0,0,.18)}
+.card h2{font-family:Grandstander,sans-serif;font-weight:800;font-size:21px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.progress .bar{height:16px;border-radius:99px;background:#e6ecf7;overflow:hidden;display:flex}
+.progress .bar i{display:block;height:100%}
+.progress .big{font-size:28px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:10px;font-size:13px;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;background:var(--c)}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px}
+.chip{border:0;background:#f3f6fc;border-radius:16px;padding:10px 4px 8px;text-align:center;font:inherit;cursor:pointer;color:var(--ink);transition:transform .12s}
+.chip:active{transform:scale(.95)}
+.chip .nm{font-weight:600;font-size:15px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip .ag{font-size:12px;color:var(--muted)}
+.av{width:46px;height:46px;border-radius:50%;display:inline-grid;place-items:center;font-weight:700;color:#fff;font-size:20px;position:relative;flex:none;box-shadow:inset 0 -4px 0 rgba(0,0,0,.15)}
+.av small{position:absolute;right:-6px;bottom:-4px;font-size:17px}
+.av.lg{width:92px;height:92px;font-size:40px}.av.lg small{font-size:30px;right:-8px}
+.pair{display:flex;align-items:center;gap:10px;padding:12px 4px;border-bottom:1px dashed #dde3ef}
+.pair:last-child{border-bottom:0}
+.who{display:flex;align-items:center;gap:8px;min-width:0;flex:1;background:none;border:0;font:inherit;color:inherit;padding:0;text-align:left;cursor:pointer}
+.who .av{width:38px;height:38px;font-size:16px}.who .av small{font-size:13px;right:-5px}
+.who b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who em{font-style:normal;font-size:12px;color:var(--muted)}
+.arrow{font-size:20px;flex:none}
+.pill{border:0;border-radius:99px;padding:6px 10px;font:600 12px Fredoka,sans-serif;cursor:pointer;white-space:nowrap;flex:none;color:#fff}
+.s-none{background:#a4afc6}.s-idea{background:#8b5cf6}.s-bought{background:var(--blue)}.s-wrapped{background:var(--red)}.s-delivered{background:var(--green)}
+.seg{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.seg button{border:2px solid #e2e8f3;background:#fff;border-radius:14px;padding:9px 2px;font:600 12px Fredoka,sans-serif;cursor:pointer;color:var(--ink)}
+.seg button .e{display:block;font-size:20px}
+.seg button.on{color:#fff;border-color:transparent}
+.btn{border:0;border-radius:14px;padding:12px 16px;font:600 15px Fredoka,sans-serif;cursor:pointer;background:var(--blue);color:#fff;box-shadow:0 4px 0 #1d4fa8}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 #1d4fa8}
+.btn.red{background:var(--red);box-shadow:0 4px 0 #a5232a}.btn.green{background:var(--green);box-shadow:0 4px 0 #136b39}
+.btn.ghost{background:#eef2fa;color:var(--ink);box-shadow:0 4px 0 #cfd8ea}
+.btn.small{padding:8px 12px;font-size:13px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+label.f{display:block;font-size:13px;font-weight:600;color:var(--muted);margin:10px 0 4px}
+input,select,textarea{width:100%;font:16px Fredoka,sans-serif;padding:11px 12px;border-radius:12px;border:2px solid #e2e8f3;background:#fbfcff;color:var(--ink)}
+textarea{min-height:70px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sky)}
+.warn{background:#fff4d6;border:2px solid var(--gold);border-radius:16px;padding:12px 14px;margin:14px 0;font-size:14px}
+.warn b{display:block;margin-bottom:4px}
+.ok{background:#e5f7ec;border:2px solid #7bd3a0;border-radius:16px;padding:10px 14px;margin:14px 0;font-size:14px;color:#135e33}
+.links{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.link{border:0;border-radius:18px;padding:14px 12px;text-align:left;font:inherit;cursor:pointer;color:#fff;min-height:96px;display:flex;flex-direction:column;justify-content:space-between}
+.link.give{background:linear-gradient(135deg,#e5383b,#b81f3a)}.link.get{background:linear-gradient(135deg,#1f9d55,#0f6e3b)}
+.link small{opacity:.85;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.link .who2{display:flex;align-items:center;gap:8px;margin-top:8px}
+.link .who2 .av{width:40px;height:40px;font-size:17px;background:rgba(255,255,255,.25)!important}
+.link .who2 b{font-size:19px;display:block}.link .who2 em{font-style:normal;font-size:13px;opacity:.9}
+.prof{text-align:center;color:#fff;padding:18px 0 4px}
+.prof h1{font-family:Grandstander,sans-serif;font-weight:900;font-size:40px;margin:10px 0 0}
+.prof .age{color:#c9d8ff;font-size:17px}
+.back{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:10px 0;background:linear-gradient(var(--navy) 70%,transparent)}
+.back button{border:0;background:rgba(255,255,255,.14);color:#fff;font:600 15px Fredoka,sans-serif;padding:9px 14px;border-radius:99px;cursor:pointer}
+.ideas{display:grid;gap:10px}
+.idea{display:flex;gap:12px;background:#f6f8fd;border-radius:16px;padding:10px;align-items:flex-start}
+.idea img,.idea .ph{width:72px;height:72px;border-radius:12px;object-fit:cover;flex:none;background:#e6ecf7;display:grid;place-items:center;font-size:30px}
+.idea .t{font-weight:600}.idea .p{color:var(--green);font-weight:700}
+.idea .w{font-size:13px;color:var(--muted);margin-top:2px}
+.idea a{color:var(--blue);font-size:13px;font-weight:600}
+.idea .x{margin-left:auto;border:0;background:none;color:#a4afc6;font-size:18px;cursor:pointer}
+.empty{border:2px dashed #cdd6ea;border-radius:16px;padding:18px;text-align:center;color:var(--muted);font-size:14px}
+.empty .big{font-size:34px}
+details.add{margin-top:12px}
+details.add summary{cursor:pointer;font-weight:600;color:var(--blue);list-style:none}
+details.add summary::-webkit-details-marker{display:none}
+.log{font-size:14px;max-height:340px;overflow:auto}
+.log div{padding:7px 0;border-bottom:1px solid #eef1f7}
+.log time{color:var(--muted);font-size:12px;display:block}
+.excl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#f6f8fd;border-radius:14px;padding:8px 10px;margin:6px 0}
+.tag{background:#fff;border-radius:99px;padding:4px 10px;font-size:13px;font-weight:600;border:1px solid #e2e8f3}
+.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:6px;margin:8px 0}
+.checks label{display:flex;gap:6px;align-items:center;font-size:14px;background:#f6f8fd;border-radius:10px;padding:6px 8px}
+.checks input{width:auto}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;justify-content:center;gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(11,31,75,.92);backdrop-filter:blur(8px)}
+.nav button{flex:1;max-width:150px;border:0;background:none;color:#c9d8ff;font:600 12px Fredoka,sans-serif;padding:4px;border-radius:12px;cursor:pointer}
+.nav button .e{display:block;font-size:22px}
+.nav button.on{background:rgba(255,255,255,.12);color:#fff}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;background:#fff;color:var(--ink);padding:10px 16px;border-radius:99px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.3);transition:.25s;z-index:20;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.sync{font-size:12px;color:#9fb3e6;text-align:center;margin-top:6px}
+.sync i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3ddc84;margin-right:5px}
+.sync.off i{background:var(--gold)}
+.muted{color:var(--muted);font-size:13px}
+.foot{color:#9fb3e6;text-align:center;font-size:12px;margin:20px 0}
+.filter{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:6px}
+.filter button{border:0;border-radius:99px;padding:6px 12px;font:600 13px Fredoka,sans-serif;background:#eef2fa;color:var(--ink);white-space:nowrap;cursor:pointer}
+.filter button.on{background:var(--navy);color:#fff}
+</style>
+</head>
+<body>
+<canvas id="snow"></canvas>
+<div class="wrap" id="app"><div class="hero" style="color:#fff;text-align:center;padding-top:80px">Lighting the candles… 🕎</div></div>
+<nav class="nav" id="nav"></nav>
+<div class="toast" id="toast"></div>
+<script>
+const DATA_URL='https://textdb.dev/api/data/wkc-847f82d92bbd410787b5a9eaea59feac';
+const BACKUP_URL='backup/state.json';
+const STATUSES=[['none','Not yet','⏳'],['idea','Got idea','💡'],['bought','Bought','🛍️'],['wrapped','Wrapped','🎀'],['delivered','Given','🎉']];
+const SCOL={none:'#a4afc6',idea:'#8b5cf6',bought:'#2f6fde',wrapped:'#e5383b',delivered:'#1f9d55'};
+const COLORS=['#e5383b','#2f6fde','#1f9d55','#f59e0b','#8b5cf6','#0ea5b7','#d946ef','#ef6c3b','#3b82f6','#16a34a','#c2410c','#7c3aed'];
+const BADGES=['🕎','🎄','⛄','🎁','🍩','⭐','🦌','🧦','🔵','❄️','🍪','🕯️','🎅','🪙','🔔','🥔','🎈'];
+let S=null, readOnly=false, lastSync=null, busy=false, pending=[];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const me=()=>localStorage.getItem('wkc-name')||'';
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2200)}
+function kid(id){return S.kids.find(k=>k.id===id)}
+function kidIdx(id){return S.kids.findIndex(k=>k.id===id)}
+function ageTxt(k){const a=String(k.age||'').trim();if(!a)return'';return /[a-z]/i.test(a)?a.replace(/\bmo\b/,'months'):(a==='1'?'1 year':a+' years')}
+function hashStr(s){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))|0;return Math.abs(h)}
+function av(k,cls=''){if(!k)return`<span class="av ${cls}" style="background:#cbd3e3">?</span>`;const h=hashStr(k.id);return`<span class="av ${cls}" style="background:${COLORS[h%COLORS.length]}">${esc((k.name||'?')[0].toUpperCase())}<small>${BADGES[h%BADGES.length]}</small></span>`}
+function giverOf(id){return Object.keys(S.assign).filter(g=>S.assign[g]===id)}
+function excluded(a,b){return a===b||S.exclusions.some(g=>g.includes(a)&&g.includes(b))}
+function problems(st=S){const out=[];const ids=st.kids.map(k=>k.id);const name=id=>(st.kids.find(k=>k.id===id)||{name:id}).name;
+ for(const id of ids){const r=st.assign[id];if(!r||!ids.includes(r))out.push(`${name(id)} isn't buying for anyone yet`);else if(r===id)out.push(`${name(id)} is buying for themself`);else if(st.exclusions.some(g=>g.includes(id)&&g.includes(r)))out.push(`${name(id)} → ${name(r)} breaks a sibling rule`)}
+ for(const id of ids){const n=ids.filter(g=>st.assign[g]===id).length;if(n===0)out.push(`Nobody is buying for ${name(id)}`);if(n>1)out.push(`${name(id)} is getting ${n} gifts`)}
+ return out}
+// ---------- storage ----------
+async function fetchRemote(){const r=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const t=(await r.text()).trim();if(!t)return null;const j=JSON.parse(t);if(!j||j.app!=='wkc')throw new Error('bad data');return j}
+async function pushRemote(st){const r=await fetch(DATA_URL,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(st)});if(!r.ok)throw new Error('HTTP '+r.status)}
+async function load(){try{let j=await fetchRemote();if(!j){try{j=await (await fetch(BACKUP_URL+'?t='+Date.now(),{cache:'no-store'})).json();if(!j||j.app!=='wkc')throw 0}catch(_){j=await (await fetch('seed.json',{cache:'no-store'})).json()}await pushRemote(j)}S=j;readOnly=false;lastSync=new Date()}catch(e){console.warn(e);try{S=await (await fetch(BACKUP_URL+'?t='+Date.now(),{cache:'no-store'})).json();readOnly=true}catch(e2){S=await (await fetch('seed.json')).json();readOnly=true}}render()}
+async function mutate(fn,msg){if(readOnly){toast('Offline right now, try again in a minute');return}
+ pending.push({fn,msg});if(busy)return;busy=true;
+ try{while(pending.length){const batch=pending.splice(0);let cur;try{cur=await fetchRemote()||S}catch(e){cur=S}
+  for(const p of batch){p.fn(cur);if(p.msg){cur.log=cur.log||[];cur.log.unshift({t:new Date().toISOString(),who:me()||'Someone',msg:p.msg});cur.log=cur.log.slice(0,120)}}
+  cur.rev=(cur.rev||0)+1;cur.updatedAt=new Date().toISOString();S=cur;render();await pushRemote(cur);lastSync=new Date()}
+  toast('Saved ✓ everyone can see it')}catch(e){console.error(e);toast('Could not save, check your connection')}finally{busy=false;renderSync()}}
+async function poll(){if(document.hidden||busy||readOnly&&!S)return;try{const j=await fetchRemote();lastSync=new Date();if(readOnly){readOnly=false}
+ if(j&&(j.rev!==S.rev||j.updatedAt!==S.updatedAt)){S=j;const a=document.activeElement;if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)){window._dirty=true}else render()}else renderSync()}catch(e){}}
+setInterval(poll,5000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});
+document.addEventListener('focusout',()=>setTimeout(()=>{if(window._dirty&&!/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||'')){window._dirty=false;render()}},300));
+// ---------- draw ----------
+function shuffle(a){a=a.slice();const r=new Uint32Array(a.length);crypto.getRandomValues(r);for(let i=a.length-1;i>0;i--){const j=r[i]%(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
+function makeDraw(){const ids=S.kids.map(k=>k.id);if(ids.length<2)return null;
+ for(let t=0;t<20000;t++){const o=shuffle(ids);let ok=true;for(let i=0;i<o.length;i++)if(excluded(o[i],o[(i+1)%o.length])){ok=false;break}if(ok){const a={};o.forEach((g,i)=>a[g]=o[(i+1)%o.length]);return a}}
+ // fallback: any valid derangement via backtracking
+ const order=shuffle(ids),used=new Set(),a={};function bt(i){if(i===order.length)return true;for(const r of shuffle(ids)){if(used.has(r)||excluded(order[i],r))continue;used.add(r);a[order[i]]=r;if(bt(i+1))return true;used.delete(r)}return false}
+ return bt(0)?a:null}
+// ---------- views ----------
+function route(){const h=location.hash.replace(/^#\/?/,'');const [v,id]=h.split('/');return{v:v||'home',id:decodeURIComponent(id||'')}}
+function go(h){location.hash=h;window.scrollTo(0,0)}
+window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
+const menorah=`<svg class="menorah" viewBox="0 0 260 120" aria-hidden="true"><g fill="#ffc93c">${[0,1,2,3,4,5,6,7,8].map(i=>{const x=18+i*28,y=i===4?14:30;return`<rect x="${x-4}" y="${y+12}" width="8" height="${i===4?32:16}" rx="2" fill="${i%2?'#8fc3ff':'#fff'}"/><path class="flame" d="M${x} ${y-4} C${x+6} ${y+4} ${x+4} ${y+12} ${x} ${y+12} C${x-4} ${y+12} ${x-6} ${y+4} ${x} ${y-4}Z" fill="#ffb703"/>`}).join('')}</g><path d="M18 58 Q130 120 242 58 M46 58 Q130 105 214 58 M74 58 Q130 92 186 58 M102 58 Q130 78 158 58" stroke="#ffc93c" stroke-width="6" fill="none" stroke-linecap="round"/><rect x="126" y="58" width="8" height="46" fill="#ffc93c"/><rect x="98" y="102" width="64" height="12" rx="6" fill="#ffc93c"/></svg>`;
+function statusPill(k){const s=STATUSES.find(x=>x[0]===(k.status||'none'))||STATUSES[0];return`<button class="pill s-${s[0]}" data-cycle="${esc(k.id)}" title="Tap to change">${s[2]} ${s[1]}</button>`}
+function renderSync(){const el=$('#sync');if(!el)return;el.className='sync'+(readOnly?' off':'');el.innerHTML=readOnly?'<i></i>Showing the last saved copy, live sync is reconnecting…':`<i></i>Live: everyone sees changes${lastSync?' · synced '+lastSync.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}):''}`}
+function nav(){const v=route().v;$('#nav').innerHTML=[['home','🕎','Home'],['list','🎁','All gifts'],['manage','🎲','Swap & draw'],['log','📜','Activity']].map(([k,e,l])=>`<button class="${v===k?'on':''}" onclick="go('${k==='home'?'':k}')"><span class="e">${e}</span>${l}</button>`).join('')}
+function progressCard(){const n=S.kids.length,c={};STATUSES.forEach(s=>c[s[0]]=0);S.kids.forEach(k=>c[k.status||'none']++);const got=c.bought+c.wrapped+c.delivered;
+ return`<div class="card progress"><h2>🎁 Gift progress</h2><div class="row" style="justify-content:space-between;align-items:baseline"><div class="big">${got} of ${n} bought</div><div class="muted">${c.delivered} given out</div></div><div class="bar">${STATUSES.slice().reverse().map(s=>`<i style="width:${n?c[s[0]]/n*100:0}%;background:${SCOL[s[0]]}"></i>`).join('')}</div><div class="legend">${STATUSES.map(s=>`<span style="--c:${SCOL[s[0]]}">${s[1]} ${c[s[0]]}</span>`).join('')}</div></div>`}
+function warnBox(){const p=problems();return p.length?`<div class="warn"><b>⚠️ Heads up, the draw needs fixing</b>${p.map(esc).join('<br>')}<div style="margin-top:8px"><button class="btn small" onclick="go('manage')">Fix it</button></div></div>`:''}
+function pairRow(k){const r=kid(S.assign[k.id]);return`<div class="pair"><button class="who" onclick="go('kid/${esc(k.id)}')">${av(k)}<span style="min-width:0"><b>${esc(k.name)}</b><em>${esc(ageTxt(k))}</em></span></button><span class="arrow">🎁➜</span><button class="who" ${r?`onclick="go('kid/${esc(r.id)}')"`:''}>${av(r)}<span style="min-width:0"><b>${r?esc(r.name):'Nobody yet'}</b><em>${r?esc(ageTxt(r)):''}</em></span></button>${statusPill(k)}</div>`}
+function viewHome(){return`<header class="hero">${menorah}<h1><span class="k">Warszawski Kids</span><br><span class="c">Chanukah</span></h1><p>🕎 One gift each · everyone gets one 🎄</p><div id="sync" class="sync"></div></header>
+ ${!me()?`<div class="card"><h2>👋 Who's here?</h2><p class="muted" style="margin:0 0 8px">Optional: your name shows next to your changes in the activity list.</p><div class="row" style="flex-wrap:nowrap"><input id="myname" placeholder="e.g. Aunt Shoshy"><button class="btn" onclick="setName()">Save</button></div></div>`:''}
+ ${warnBox()}
+ <div class="card"><h2>👆 Tap a kid</h2><p class="muted" style="margin:-4px 0 12px">See who they give to, who they get from, and gift ideas.</p><div class="chips">${S.kids.map(k=>`<button class="chip" onclick="go('kid/${esc(k.id)}')">${av(k)}<div class="nm">${esc(k.name)}</div><div class="ag">${esc(ageTxt(k))}</div></button>`).join('')}</div></div>
+ ${progressCard()}
+ <div class="card"><h2>🎁 Who buys for who</h2><p class="muted" style="margin:-4px 0 4px">Tap a status to move it along.</p>${S.kids.map(pairRow).join('')}</div>
+ <div class="foot">Made with ❤️ for the Warszawski kids · Chag Sameach & Happy Holidays<br>${me()?`Editing as ${esc(me())} · <a href="#" style="color:#c9d8ff" onclick="localStorage.removeItem('wkc-name');render();return false">change</a>`:''}</div>`}
+let listFilter='all';
+function viewList(){const ks=S.kids.filter(k=>listFilter==='all'||(k.status||'none')===listFilter);return`<header class="hero"><h1 style="font-size:34px"><span class="c">All gifts</span></h1><div id="sync" class="sync"></div></header>${progressCard()}<div class="card"><div class="filter">${[['all','All'],...STATUSES.map(s=>[s[0],s[2]+' '+s[1]])].map(([k,l])=>`<button class="${listFilter===k?'on':''}" onclick="listFilter='${k}';render()">${l}</button>`).join('')}</div>${ks.length?ks.map(pairRow).join(''):'<div class="empty">Nothing here yet</div>'}</div>`}
+function viewKid(id){const k=kid(id);if(!k)return`<div class="back"><button onclick="go('')">← Home</button></div><div class="card">That kid isn't in the list anymore.</div>`;
+ const r=kid(S.assign[k.id]);const gs=giverOf(k.id).map(kid).filter(Boolean);const g=gs[0];
+ const ideas=(k.giftIdeas||[]);
+ return`<div class="back"><button onclick="history.length>1?history.back():go('')">← Back</button><button onclick="go('')">🕎 Home</button></div>
+ <div class="prof">${av(k,'lg')}<h1>${esc(k.name)}</h1><div class="age">${esc(ageTxt(k))}</div></div>
+ <div class="links" style="margin-top:14px">
+  <button class="link give" ${r?`onclick="go('kid/${esc(r.id)}')"`:''}><small>🎁 ${esc(k.name)} gives to</small><span class="who2">${av(r)}<span><b>${r?esc(r.name):'Nobody yet'}</b><em>${r?esc(ageTxt(r)):'Pick below'}</em></span></span></button>
+  <button class="link get" ${g?`onclick="go('kid/${esc(g.id)}')"`:''}><small>🎉 ${esc(k.name)} gets from</small><span class="who2">${av(g)}<span><b>${g?esc(g.name)+(gs.length>1?' +'+(gs.length-1):''):'Nobody yet'}</b><em>${g?esc(ageTxt(g)):'Needs fixing'}</em></span></span></button>
+ </div>
+ ${problems().filter(p=>p.includes(k.name)).length?`<div class="warn"><b>⚠️ Needs fixing</b>${problems().filter(p=>p.includes(k.name)).map(esc).join('<br>')}</div>`:''}
+ <div class="card"><h2>📦 ${esc(k.name)}'s gift for ${r?esc(r.name):'…'}</h2>
+  <div class="seg">${STATUSES.map(s=>`<button class="${(k.status||'none')===s[0]?'on':''}" style="${(k.status||'none')===s[0]?'background:'+SCOL[s[0]]:''}" onclick="setStatus('${esc(k.id)}','${s[0]}')"><span class="e">${s[2]}</span>${s[1]}</button>`).join('')}</div>
+  <label class="f">What are they getting? (note)</label><textarea id="note" placeholder="e.g. Lego set, bought at Target">${esc(k.note)}</textarea>
+  <div class="row" style="margin-top:8px"><button class="btn small" onclick="saveField('${esc(k.id)}','note')">Save note</button></div></div>
+ <div class="card"><h2>⭐ ${esc(k.name)}'s wish list</h2><p class="muted" style="margin:-4px 0 8px">What ${esc(k.name)} would love (helps ${g?esc(g.name)+"'s family":'their buyer'}).</p><textarea id="wishlist" placeholder="Favorite colors, characters, sizes, things they love…">${esc(k.wishlist)}</textarea><div class="row" style="margin-top:8px"><button class="btn small" onclick="saveField('${esc(k.id)}','wishlist')">Save wish list</button></div></div>
+ <div class="card"><h2>💡 Gift ideas for ${esc(k.name)} <span class="muted" style="font-family:Fredoka;font-weight:600">(~$20)</span></h2>
+  <div class="ideas">${ideas.length?ideas.map((d,i)=>`<div class="idea">${d.image?`<img src="${esc(d.image)}" alt="" loading="lazy" onerror="this.outerHTML='<div class=ph>🎁</div>'">`:'<div class="ph">🎁</div>'}<div style="min-width:0;flex:1"><div class="t">${esc(d.title)}</div>${d.price?`<div class="p">${esc(/^\$/.test(d.price)?d.price:'$'+d.price)}</div>`:''}${d.why?`<div class="w">${esc(d.why)}</div>`:''}${d.url&&/^https?:\/\//.test(d.url)?`<a href="${esc(d.url)}" target="_blank" rel="noopener">View / buy ↗</a>`:''}${d.by?`<div class="w">Added by ${esc(d.by)}</div>`:''}</div><button class="x" title="Remove" onclick="delIdea('${esc(k.id)}',${i})">✕</button></div>`).join(''):`<div class="empty"><div class="big">🎁✨</div>Gift ideas are on the way!<br>Have one? Add it below.</div>`}</div>
+  <details class="add"><summary>＋ Add a gift idea or link</summary>
+   <label class="f">Idea</label><input id="i-title" placeholder="e.g. Magna-Tiles starter set">
+   <div class="row" style="flex-wrap:nowrap"><div style="flex:1"><label class="f">Price</label><input id="i-price" inputmode="decimal" placeholder="$20"></div><div style="flex:2"><label class="f">Link (optional)</label><input id="i-url" type="url" placeholder="https://…"></div></div>
+   <label class="f">Picture link (optional)</label><input id="i-image" type="url" placeholder="https://…jpg">
+   <label class="f">Why it's a good fit (optional)</label><input id="i-why" placeholder="Loves building things">
+   <div class="row" style="margin-top:10px"><button class="btn green" onclick="addIdea('${esc(k.id)}')">Add idea</button></div></details></div>
+ <div class="card"><h2>🔁 Change who ${esc(k.name)} buys for</h2>
+  <select id="newr"><option value="">Pick a kid…</option>${S.kids.filter(x=>x.id!==k.id).map(x=>`<option value="${esc(x.id)}" ${S.assign[k.id]===x.id?'selected':''}>${esc(x.name)} (${esc(ageTxt(x))})${excluded(k.id,x.id)?' ⛔ sibling':''}</option>`).join('')}</select>
+  <p class="muted">We'll swap with whoever had that kid, so everyone still gets exactly one gift.</p>
+  <button class="btn" onclick="reassign('${esc(k.id)}')">Swap</button></div>
+ <div class="card"><h2>✏️ Edit ${esc(k.name)}</h2><div class="row" style="flex-wrap:nowrap"><div style="flex:2"><label class="f">Name</label><input id="e-name" value="${esc(k.name)}"></div><div style="flex:1"><label class="f">Age</label><input id="e-age" value="${esc(k.age)}" placeholder="7 or 4 mo"></div></div>
+  <div class="row" style="margin-top:10px;justify-content:space-between"><button class="btn small" onclick="editKid('${esc(k.id)}')">Save</button><button class="btn small red" onclick="removeKid('${esc(k.id)}')">Remove kid</button></div></div>`}
+function viewManage(){const opts=sel=>S.kids.map(x=>`<option value="${esc(x.id)}" ${sel===x.id?'selected':''}>${esc(x.name)} → ${esc((kid(S.assign[x.id])||{name:'nobody'}).name)}</option>`).join('');
+ const p=problems();
+ return`<header class="hero"><h1 style="font-size:34px"><span class="c">Swap & draw</span></h1><div id="sync" class="sync"></div></header>
+ ${p.length?warnBox():`<div class="ok">✅ All good: ${S.kids.length} kids, everyone gives one and gets one, no sibling pairs.</div>`}
+ <div class="card"><h2>🔀 Swap two buyers</h2><p class="muted" style="margin:-4px 0 6px">The two kids trade who they're buying for.</p>
+  <label class="f">First kid</label><select id="sw-a">${opts(S.kids[0]&&S.kids[0].id)}</select><label class="f">Second kid</label><select id="sw-b">${opts(S.kids[1]&&S.kids[1].id)}</select>
+  <div id="sw-prev" class="muted" style="margin:8px 0"></div><button class="btn" onclick="doSwap()">Swap them</button></div>
+ <div class="card"><h2>🎲 New random draw</h2><p class="muted" style="margin:-4px 0 10px">Shuffles everyone into one big gift circle that follows the sibling rules. Gift status and notes reset; wish lists and ideas stay.</p><button class="btn red" onclick="redraw()">Re-draw everyone</button></div>
+ <div class="card"><h2>👨‍👩‍👧 Sibling rules</h2><p class="muted" style="margin:-4px 0 6px">Kids in the same group never draw each other.</p>
+  ${S.exclusions.length?S.exclusions.map((g,i)=>`<div class="excl">${g.map(id=>`<span class="tag">${esc((kid(id)||{name:id}).name)}</span>`).join('')}<button class="btn small ghost" style="margin-left:auto" onclick="delGroup(${i})">Remove</button></div>`).join(''):'<div class="empty">No rules yet</div>'}
+  <details class="add"><summary>＋ Add a sibling group</summary><div class="checks">${S.kids.map(k=>`<label><input type="checkbox" value="${esc(k.id)}" class="gchk">${esc(k.name)}</label>`).join('')}</div><button class="btn green small" onclick="addGroup()">Add group</button></details></div>
+ <div class="card"><h2>➕ Add a kid</h2><div class="row" style="flex-wrap:nowrap"><div style="flex:2"><label class="f">Name</label><input id="n-name" placeholder="Name"></div><div style="flex:1"><label class="f">Age</label><input id="n-age" placeholder="5"></div></div>
+  <p class="muted">They'll be added into the gift circle automatically.</p><button class="btn green" onclick="addKid()">Add kid</button></div>`}
+function viewLog(){return`<header class="hero"><h1 style="font-size:34px"><span class="c">Activity</span></h1><div id="sync" class="sync"></div></header><div class="card"><h2>📜 Recent changes</h2><div class="log">${(S.log||[]).map(l=>`<div><time>${new Date(l.t).toLocaleString([], {weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})} · ${esc(l.who)}</time>${esc(l.msg)}</div>`).join('')||'<div class="empty">No changes yet</div>'}</div></div>`}
+function render(){if(!S)return;const {v,id}=route();const app=$('#app');
+ app.innerHTML=v==='kid'?viewKid(id):v==='list'?viewList():v==='manage'?viewManage():v==='log'?viewLog():viewHome();nav();renderSync();
+ app.querySelectorAll('[data-cycle]').forEach(b=>b.onclick=e=>{e.stopPropagation();const k=kid(b.dataset.cycle);const i=STATUSES.findIndex(s=>s[0]===(k.status||'none'));setStatus(k.id,STATUSES[(i+1)%STATUSES.length][0])});
+ if(v==='manage'){const upd=()=>{const a=$('#sw-a').value,b=$('#sw-b').value;$('#sw-prev').innerHTML=swapPreview(a,b)};$('#sw-a').onchange=upd;$('#sw-b').onchange=upd;upd()}}
+// ---------- actions ----------
+function setName(){const n=$('#myname').value.trim();if(n){localStorage.setItem('wkc-name',n.slice(0,40));toast('Hi '+n+'!');render()}}
+function setStatus(id,s){const k=kid(id),lbl=STATUSES.find(x=>x[0]===s)[1];mutate(st=>{const x=st.kids.find(q=>q.id===id);if(x)x.status=s},`${k.name}'s gift for ${(kid(S.assign[id])||{name:'?'}).name}: ${lbl}`)}
+function saveField(id,f){const val=$('#'+f).value.slice(0,2000);const k=kid(id);mutate(st=>{const x=st.kids.find(q=>q.id===id);if(x)x[f]=val},`Updated ${k.name}'s ${f==='note'?'gift note':'wish list'}`)}
+function addIdea(id){const d={title:$('#i-title').value.trim().slice(0,140),price:$('#i-price').value.trim().slice(0,20),url:$('#i-url').value.trim().slice(0,600),image:$('#i-image').value.trim().slice(0,600),why:$('#i-why').value.trim().slice(0,300),by:me()};if(!d.title){toast('Give the idea a name');return}
+ if(d.url&&!/^https?:\/\//.test(d.url))d.url='https://'+d.url;if(d.image&&!/^https?:\/\//.test(d.image))d.image='';
+ mutate(st=>{const x=st.kids.find(q=>q.id===id);if(x){x.giftIdeas=x.giftIdeas||[];x.giftIdeas.push(d)}},`Added gift idea for ${kid(id).name}: ${d.title}`)}
+function delIdea(id,i){const k=kid(id),d=k.giftIdeas[i];if(!d||!confirm(`Remove "${d.title}"?`))return;mutate(st=>{const x=st.kids.find(q=>q.id===id);if(x&&x.giftIdeas){const j=x.giftIdeas.findIndex(z=>z.title===d.title&&z.url===d.url);if(j>-1)x.giftIdeas.splice(j,1)}},`Removed gift idea for ${k.name}: ${d.title}`)}
+function swapPreview(a,b){if(!a||!b||a===b)return'Pick two different kids.';const ra=S.assign[b],rb=S.assign[a];const issues=[];if(ra===a)issues.push(`${kid(a).name} would get themself`);if(rb===b)issues.push(`${kid(b).name} would get themself`);if(ra&&excluded(a,ra))issues.push(`${kid(a).name} & ${kid(ra).name} are siblings`);if(rb&&excluded(b,rb))issues.push(`${kid(b).name} & ${kid(rb).name} are siblings`);
+ return`After: <b>${esc(kid(a).name)} → ${esc((kid(ra)||{name:'nobody'}).name)}</b>, <b>${esc(kid(b).name)} → ${esc((kid(rb)||{name:'nobody'}).name)}</b>${issues.length?`<div style="color:#b45309;margin-top:4px">⚠️ ${issues.map(esc).join('; ')}</div>`:''}`}
+function doSwap(){const a=$('#sw-a').value,b=$('#sw-b').value;if(!a||!b||a===b){toast('Pick two different kids');return}
+ const ra=S.assign[b],rb=S.assign[a];const bad=(ra&&excluded(a,ra))||(rb&&excluded(b,rb));if(bad&&!confirm('This breaks a sibling rule or has someone buying for themself. Do it anyway?'))return;
+ mutate(st=>{const x=st.assign[a],y=st.assign[b];st.assign[a]=y;st.assign[b]=x;[a,b].forEach(id=>{const k=st.kids.find(q=>q.id===id);if(k){k.status='none';k.note=''}})},`Swapped: ${kid(a).name} now buys for ${(kid(ra)||{name:'nobody'}).name}, ${kid(b).name} for ${(kid(rb)||{name:'nobody'}).name}`)}
+function reassign(id){const nr=$('#newr').value;if(!nr||nr===S.assign[id])return;const other=giverOf(nr).find(g=>g!==id);const old=S.assign[id];
+ const sim=JSON.parse(JSON.stringify(S));sim.assign[id]=nr;if(other)sim.assign[other]=old;const before=problems().length,after=problems(sim);
+ let msg=`${kid(id).name} will buy for ${kid(nr).name}`+(other?`, and ${kid(other).name} takes ${(kid(old)||{name:'nobody'}).name}.`:'.');
+ if(after.length)msg+=`\n\n⚠️ Heads up:\n• `+after.join('\n• ');
+ if(!confirm(msg+'\n\nGo ahead?'))return;
+ mutate(st=>{const o=Object.keys(st.assign).find(g=>g!==id&&st.assign[g]===nr);const prev=st.assign[id];st.assign[id]=nr;if(o)st.assign[o]=prev;[id,o].forEach(q=>{const k=st.kids.find(z=>z.id===q);if(k){k.status='none';k.note=''}})},`${kid(id).name} now buys for ${kid(nr).name}`+(other?` (${kid(other).name} now buys for ${(kid(old)||{name:'nobody'}).name})`:''))}
+function redraw(){if(!confirm('Re-draw EVERYONE? This replaces all current pairs and resets gift status & notes.'))return;const a=makeDraw();if(!a){toast("Can't find a draw with these rules");return}
+ mutate(st=>{st.assign=a;st.kids.forEach(k=>{k.status='none';k.note=''})},'Re-drew everyone (new random gift circle)')}
+function editKid(id){const n=$('#e-name').value.trim().slice(0,40),a=$('#e-age').value.trim().slice(0,12);if(!n){toast('Name needed');return}const old=kid(id).name;mutate(st=>{const k=st.kids.find(q=>q.id===id);if(k){k.name=n;k.age=a}},`Edited ${old}${old!==n?' → '+n:''} (age ${a})`)}
+function removeKid(id){const k=kid(id);if(!confirm(`Remove ${k.name} from the exchange? We'll close the gap so the circle still works.`))return;
+ mutate(st=>{const g=Object.keys(st.assign).find(x=>st.assign[x]===id);const r=st.assign[id];delete st.assign[id];if(g&&r&&r!==g)st.assign[g]=r;else if(g)delete st.assign[g];st.kids=st.kids.filter(q=>q.id!==id);st.exclusions=st.exclusions.map(gr=>gr.filter(x=>x!==id)).filter(gr=>gr.length>1)},`Removed ${k.name}`);go('')}
+function addKid(){const n=$('#n-name').value.trim().slice(0,40),a=$('#n-age').value.trim().slice(0,12);if(!n){toast('Name needed');return}
+ let id=n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'kid';while(kid(id))id+='-2';
+ mutate(st=>{st.kids.push({id,name:n,age:a,status:'none',note:'',wishlist:'',giftIdeas:[]});
+  // splice into the circle: find a giver g where g->id and id->r are allowed
+  const gs=shuffle(Object.keys(st.assign));const g=gs.find(x=>!excluded(x,id))||gs[0];if(g){st.assign[id]=st.assign[g];st.assign[g]=id}},`Added ${n}${a?' ('+a+')':''}`);toast('Added '+n)}
+function addGroup(){const ids=[...document.querySelectorAll('.gchk:checked')].map(c=>c.value);if(ids.length<2){toast('Pick at least 2 kids');return}
+ mutate(st=>{st.exclusions.push(ids)},`Added sibling rule: ${ids.map(i=>kid(i).name).join(', ')}`)}
+function delGroup(i){const g=S.exclusions[i];if(!confirm('Remove this sibling rule?'))return;mutate(st=>{st.exclusions=st.exclusions.filter(x=>JSON.stringify(x)!==JSON.stringify(g))},`Removed sibling rule: ${g.map(i=>(kid(i)||{name:i}).name).join(', ')}`)}
+// ---------- snow ----------
+(()=>{const c=$('#snow'),x=c.getContext('2d');let W,H,f=[];const R=()=>{W=c.width=innerWidth;H=c.height=innerHeight};R();addEventListener('resize',R);
+ for(let i=0;i<60;i++)f.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2.2+.6,s:Math.random()*.6+.25,d:Math.random()*6.28});
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){return}
+ (function t(){x.clearRect(0,0,W,H);x.fillStyle='rgba(255,255,255,.75)';for(const p of f){p.y+=p.s;p.d+=.01;p.x+=Math.sin(p.d)*.3;if(p.y>H){p.y=-5;p.x=Math.random()*W}x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill()}requestAnimationFrame(t)})()})();
+load();
+</script>
+</body>
+</html>

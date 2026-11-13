@@ -1,0 +1,198 @@
+{
+ "app": "wkc",
+ "rev": 1,
+ "updatedAt": "2026-11-13T00:03:54.937301+00:00",
+ "kids": [
+  {
+   "id": "mollie",
+   "name": "Mollie",
+   "age": "13",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "rocky",
+   "name": "Rocky",
+   "age": "10",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "isaac",
+   "name": "Isaac",
+   "age": "5",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "ari",
+   "name": "Ari",
+   "age": "11",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "shalom",
+   "name": "Shalom",
+   "age": "8",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "chana",
+   "name": "Chana",
+   "age": "5",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "ella",
+   "name": "Ella",
+   "age": "10",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "abie",
+   "name": "Abie",
+   "age": "7",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "mika",
+   "name": "Mika",
+   "age": "4",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "noa",
+   "name": "Noa",
+   "age": "4",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "nesya",
+   "name": "Nesya",
+   "age": "1",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "shaina",
+   "name": "Shaina",
+   "age": "1",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "bailey",
+   "name": "Bailey",
+   "age": "2",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "yisroel",
+   "name": "Yisroel",
+   "age": "5",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "menachem",
+   "name": "Menachem",
+   "age": "1",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "sara",
+   "name": "Sara",
+   "age": "3",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  },
+  {
+   "id": "bella",
+   "name": "Bella",
+   "age": "4 mo",
+   "status": "none",
+   "note": "",
+   "wishlist": "",
+   "giftIdeas": []
+  }
+ ],
+ "assign": {
+  "nesya": "noa",
+  "noa": "bella",
+  "bella": "ella",
+  "ella": "shalom",
+  "shalom": "isaac",
+  "isaac": "rocky",
+  "rocky": "yisroel",
+  "yisroel": "bailey",
+  "bailey": "abie",
+  "abie": "shaina",
+  "shaina": "mollie",
+  "mollie": "ari",
+  "ari": "mika",
+  "mika": "sara",
+  "sara": "menachem",
+  "menachem": "chana",
+  "chana": "nesya"
+ },
+ "exclusions": [
+  [
+   "abie",
+   "ella",
+   "mika"
+  ],
+  [
+   "ari",
+   "chana",
+   "shalom"
+  ]
+ ],
+ "log": [
+  {
+   "t": "2026-11-13T00:03:54.937301+00:00",
+   "who": "Grok Bot",
+   "msg": "Started the exchange with a random draw for 17 kids (one big circle)"
+  }
+ ]
+}
