@@ -150,6 +150,18 @@ details.add summary::-webkit-details-marker{display:none}
 .reveal h2{justify-content:center;font-size:30px!important}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:30}
 .sheet input.code{font-size:28px;letter-spacing:10px;text-align:center}
+.biggive{width:100%;margin-top:14px;min-height:120px}.biggive .who2 b{font-size:26px}.biggive .who2 .av{width:54px;height:54px;font-size:22px}
+.getsline{color:#dfe8ff;text-align:center;font-size:15px;margin:10px 0 0;font-weight:500}.getsline a{color:#ffc93c;font-weight:700;text-decoration:none}
+.pin{color:#fff;text-align:center;padding:10px 0 20px}.lockic{font-size:30px}.pin .pt{font-size:22px;font-weight:500;margin-top:8px}.pin .ps{font-size:14px;color:#9fb3e6;margin-top:2px}
+.dots{display:flex;gap:22px;justify-content:center;margin:26px 0 34px}.dots i{width:14px;height:14px;border-radius:50%;border:1.5px solid #fff;transition:background .1s}.dots i.on{background:#fff}
+.dots.shake{animation:shake .45s cubic-bezier(.36,.07,.19,.97)}@keyframes shake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(5px)}30%,50%,70%{transform:translateX(-12px)}40%,60%{transform:translateX(12px)}}
+.pad{display:grid;grid-template-columns:repeat(3,78px);gap:16px 26px;justify-content:center}
+.pad button{width:78px;height:78px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-family:Fredoka,-apple-system,sans-serif;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:background .15s}
+.pad button:active{background:rgba(255,255,255,.45)}.pad button b{font-size:34px;font-weight:400;line-height:1}.pad button small{font-size:9px;letter-spacing:2px;font-weight:700;margin-top:2px;min-height:10px}
+.pad button.del{background:none;font-size:26px}
+.adminbar{display:flex;justify-content:space-between;align-items:center;margin:4px 0}.badge{background:var(--gold);color:#2b1300;font-weight:700;border-radius:99px;padding:6px 12px;font-size:14px}
+details.kidrow{border-bottom:1px dashed #dde3ef;padding:8px 0}details.kidrow summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none}details.kidrow summary::-webkit-details-marker{display:none}
+details.kidrow summary .av{width:34px;height:34px;font-size:15px}details.kidrow summary .av small{font-size:12px}
 .filter{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:6px}
 .filter button{border:0;border-radius:99px;padding:6px 12px;font:600 13px Fredoka,sans-serif;background:#eef2fa;color:var(--ink);white-space:nowrap;cursor:pointer}
 .filter button.on{background:var(--navy);color:#fff}
@@ -218,15 +230,14 @@ const menorah=`<svg class="menorah" viewBox="0 0 260 120" aria-hidden="true"><g 
 function toggles(k){return`<div class="toggles"><button class="tg s ${k.sent?'on':''}" data-sent="${esc(k.id)}">${k.sent?'✅ Sent':'◻️ Sent?'}</button><button class="tg r ${k.received?'on':''}" data-recv="${esc(k.id)}">${k.received?'📦 Received':'◻️ Received?'}</button></div>`}
 function openBanner(){const d=S.openingDate,n=daysTo(d);const isGo=d&&n<=0;
  return`<div class="open ${isGo?'go':''}" id="openb">${isGo?`<div class="t1">🎉 Time to open! 🎁</div><div class="t2">Opening day ${n===0?'is today':'was '+esc(fmtDate(d))}! Rip into those boxes 🕎🎄</div>`:`<div class="t1">Keep boxes closed! 🎁</div><div class="t2">Opening day: <b>${d?esc(fmtDate(d)):'Date TBD'}</b></div>${d?`<div class="n">${n}</div><div class="t2">${n===1?'day':'days'} to go</div>`:''}`}
- <button class="ch" onclick="document.getElementById('openb').classList.toggle('editing')">📅 ${d?'Change':'Set'} opening day</button>
- <div class="ed"><input type="date" id="odate" value="${esc(d||'')}"><button class="btn small" onclick="setOpening()">Save</button>${d?`<button class="btn small ghost" onclick="setOpening(true)">Clear</button>`:''}</div></div>`}
+ </div>`}
 function renderSync(){const el=$('#sync');if(!el)return;el.className='sync'+(readOnly?' off':'');el.innerHTML=readOnly?'<i></i>Showing the last saved copy, live sync is reconnecting…':`<i></i>Live: everyone sees changes${lastSync?' · synced '+lastSync.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}):''}`}
-function nav(){const v=route().v;$('#nav').innerHTML=[['home','🕎','Home'],['list','🎁','All gifts'],['manage','🔀','Swap & fix'],['log','📜','Activity']].map(([k,e,l])=>`<button class="${v===k?'on':''}" onclick="go('${k==='home'?'':k}')"><span class="e">${e}</span>${l}</button>`).join('')}
+function nav(){const v=route().v;$('#nav').innerHTML=[['home','🕎','Home'],['list','🎁','All gifts'],['log','📜','Activity']].map(([k,e,l])=>`<button class="${v===k?'on':''}" onclick="go('${k==='home'?'':k}')"><span class="e">${e}</span>${l}</button>`).join('')}
 function progressCard(){const n=S.kids.length,s=S.kids.filter(k=>k.sent).length,r=S.kids.filter(k=>k.received).length;
  return`<div class="card progress"><h2>📮 Gift progress</h2><div class="big" style="font-size:22px">✅ ${s} of ${n} sent · 📦 ${r} of ${n} received</div>
  <div class="muted" style="margin:8px 0 4px">Sent</div><div class="bar"><i style="width:${n?s/n*100:0}%;background:var(--green)"></i></div>
  <div class="muted" style="margin:8px 0 4px">Received</div><div class="bar"><i style="width:${n?r/n*100:0}%;background:var(--blue)"></i></div></div>`}
-function warnBox(){const p=problems();return p.length?`<div class="warn"><b>⚠️ Heads up, the draw needs fixing</b>${p.map(esc).join('<br>')}<div style="margin-top:8px"><button class="btn small" onclick="go('manage')">Fix it</button></div></div>`:''}
+function warnBox(){const p=problems();return p.length?`<div class="warn"><b>⚠️ Heads up, the draw needs fixing</b>${p.map(esc).join('<br>')}${isAdmin()?`<div style="margin-top:8px"><button class="btn small" onclick="go('settings')">Fix it</button></div>`:''}</div>`:''}
 function pairRow(k){const r=kid(S.assign[k.id]);return`<div class="pair"><button class="who" onclick="go('kid/${esc(k.id)}')">${av(k)}<span style="min-width:0"><b>${esc(k.name)}</b><em>${esc(ageTxt(k))}</em></span></button><span class="arrow">🎁➜</span>${r?`<button class="who" onclick="go('kid/${esc(r.id)}')">${av(r)}<span style="min-width:0"><b>${esc(r.name)}</b><em>${esc(ageTxt(r))}</em></span></button>`:`<button class="btn small" style="flex:1" onclick="go('draw/${esc(k.id)}')">🎡 Draw!</button>`}${r?toggles(k):''}</div>`}
 function viewHome(){return`<header class="hero">${menorah}<h1><span class="k">Warszawski Kids</span><br><span class="c">Chanukah</span></h1><p>🕎 One gift each · everyone gets one 🎄</p><div id="sync" class="sync"></div></header>
  ${openBanner()}
@@ -239,52 +250,26 @@ function viewHome(){return`<header class="hero">${menorah}<h1><span class="k">Wa
  <div class="foot">Made with ❤️ for the Warszawski kids · Chag Sameach & Happy Holidays<br>${me()?`Editing as ${esc(me())} · <a href="#" style="color:#c9d8ff" onclick="localStorage.removeItem('wkc-name');render();return false">change</a>`:''}</div>`}
 let listFilter='all';
 function viewList(){const F={all:()=>1,notsent:k=>!k.sent,sent:k=>k.sent,notrecv:k=>k.sent&&!k.received,recv:k=>k.received};const ks=S.kids.filter(F[listFilter]||F.all);return`<header class="hero"><h1 style="font-size:34px"><span class="c">All gifts</span></h1><div id="sync" class="sync"></div></header>${openBanner()}${progressCard()}<div class="card"><div class="filter">${[['all','All'],['notsent','⏳ Not sent'],['sent','✅ Sent'],['notrecv','🚚 On the way'],['recv','📦 Received']].map(([k,l])=>`<button class="${listFilter===k?'on':''}" onclick="listFilter='${k}';render()">${l}</button>`).join('')}</div>${ks.length?ks.map(pairRow).join(''):'<div class="empty">Nothing here yet</div>'}</div>`}
+function ideaHTML(k,d,i){return`<div class="idea">${d.image?`<img src="${esc(d.image)}" alt="" loading="lazy" onerror="this.outerHTML='<div class=ph>🎁</div>'">`:'<div class="ph">🎁</div>'}<div style="min-width:0;flex:1"><div class="t">${esc(d.title)}</div>${d.price!==''&&d.price!=null?`<div class="p">${esc(fmtPrice(d.price))}</div>`:''}${d.why?`<div class="w">${esc(d.why)}</div>`:''}${d.url&&/^https?:\/\//.test(d.url)?`<a href="${esc(d.url)}" target="_blank" rel="noopener" class="buy">${/amazon\./.test(d.url)?'🛒 Buy on Amazon':'🛒 View / buy'} ↗</a>`:''}${d.addedBy||d.by?`<div class="w" style="font-size:11px">${/^From family$/i.test(d.addedBy||'')?'From family 💙':'Added by '+esc(d.addedBy||d.by)}</div>`:''}</div>${isAdmin()?`<button class="x" title="Remove" onclick="delIdea('${esc(k.id)}',${i})">✕</button>`:''}</div>`}
 function viewKid(id){const k=kid(id);if(!k)return`<div class="back"><button onclick="go('')">← Home</button></div><div class="card">That kid isn't in the list anymore.</div>`;
  const r=kid(S.assign[k.id]);const gs=giverOf(k.id).map(kid).filter(Boolean);const g=gs[0];
  const ideas=(k.giftIdeas||[]);
  return`<div class="back"><button onclick="history.length>1?history.back():go('')">← Back</button><button onclick="go('')">🕎 Home</button></div>
  <div class="prof">${av(k,'lg')}<h1>${esc(k.name)}</h1><div class="age">${esc(ageTxt(k))}${/mo/i.test(k.age||'')?' · Mom & Dad shop for '+esc(k.name):''}</div></div>
- <div class="links" style="margin-top:14px">
-  <button class="link give" onclick="go('${r?'kid/'+esc(r.id):'draw/'+esc(k.id)}')"><small>🎁 ${esc(k.name)} gives to</small><span class="who2">${av(r)}<span><b>${r?esc(r.name):'🎡 Draw!'}</b><em>${r?esc(ageTxt(r)):'Not drawn yet, tap to spin'}</em></span></span>${r?`<span class="st"><span>${k.sent?'✅ Sent':'⏳ Not sent'}</span><span>${k.received?'📦 Received':'Not received'}</span></span>`:''}</button>
-  <button class="link get" ${g?`onclick="go('kid/${esc(g.id)}')"`:''}><small>🎉 ${esc(k.name)} gets from</small><span class="who2">${av(g)}<span><b>${g?esc(g.name)+(gs.length>1?' +'+(gs.length-1):''):'🤫 Not yet'}</b><em>${g?esc(ageTxt(g)):'Waiting for the draw'}</em></span></span>${g?`<span class="st"><span>${g.sent?'✅ Sent':'⏳ Not sent'}</span><span>${g.received?'📦 Received':'Not received'}</span></span>`:''}</button>
- </div>
- ${problems().filter(p=>p.includes(k.name)).length?`<div class="warn"><b>⚠️ Needs fixing</b>${problems().filter(p=>p.includes(k.name)).map(esc).join('<br>')}</div>`:''}
- ${openBanner()}
+ <button class="link give biggive" onclick="go('${r?'kid/'+esc(r.id):'draw/'+esc(k.id)}')"><small>🎁 ${esc(k.name)} is giving to</small><span class="who2">${av(r)}<span><b>${r?esc(r.name):'🎡 Draw!'}</b><em>${r?esc(ageTxt(r))+' · tap for gift ideas':'Not drawn yet, tap to spin the wheel'}</em></span></span>${r?`<span class="st"><span>${k.sent?'✅ Sent':'⏳ Not sent'}</span><span>${k.received?'📦 Received':'Not received yet'}</span></span>`:''}</button>
+ <div class="getsline">${g?`🎉 Gets from <a href="#kid/${esc(g.id)}">${esc(g.name)}</a>${gs.length>1?' +'+(gs.length-1):''} · ${g.sent?'✅ sent':'⏳ not sent'} · ${g.received?'📦 received':'not received'}`:'🎉 Gets from: 🤫 not drawn yet'}</div>
  <div class="card"><h2>📮 Mail tracker</h2><div class="bigtg">
   <button class="s ${k.sent?'on':''}" ${r?'':'disabled'} onclick="toggleSent('${esc(k.id)}')"><span class="e">✅</span>${k.sent?'Sent!':'Mark sent'}<small>${esc(k.name)}'s gift to ${r?esc(r.name):'…'}</small></button>
   <button class="r ${g&&g.received?'on':''}" ${g?'':'disabled'} onclick="toggleRecv('${g?esc(g.id):''}')"><span class="e">📦</span>${g&&g.received?'Received!':'Mark received'}<small>${g?'from '+esc(g.name):'…'} to ${esc(k.name)}</small></button></div>
-  <p class="muted" style="margin:10px 0 0">✅ for the gift ${esc(k.name)} sends · 📦 for the gift ${esc(k.name)} gets. Keep boxes closed until opening day!</p></div>
- <div class="card"><h2>📝 ${esc(k.name)}'s gift for ${r?esc(r.name):'…'}</h2>
-  <label class="f">What are they getting? (note)</label><textarea id="note" placeholder="e.g. Lego set, bought at Target">${esc(k.note)}</textarea>
-  <div class="row" style="margin-top:8px"><button class="btn small" onclick="saveField('${esc(k.id)}','note')">Save note</button></div></div>
- <div class="card"><h2>⭐ ${esc(k.name)}'s wish list</h2><p class="muted" style="margin:-4px 0 8px">What ${esc(k.name)} would love (helps ${g?esc(g.name)+"'s family":'their buyer'}).</p><textarea id="wishlist" placeholder="Favorite colors, characters, sizes, things they love…">${esc(k.wishlist)}</textarea><div class="row" style="margin-top:8px"><button class="btn small" onclick="saveField('${esc(k.id)}','wishlist')">Save wish list</button></div></div>
- <div class="card"><h2>💡 Gift ideas for ${esc(k.name)} <span class="muted" style="font-family:Fredoka;font-weight:600">(~$20)</span></h2>
-  <div class="ideas">${ideas.length?ideas.map((d,i)=>`<div class="idea">${d.image?`<img src="${esc(d.image)}" alt="" loading="lazy" onerror="this.outerHTML='<div class=ph>🎁</div>'">`:'<div class="ph">🎁</div>'}<div style="min-width:0;flex:1"><div class="t">${esc(d.title)}</div>${d.price!==''&&d.price!=null?`<div class="p">${esc(fmtPrice(d.price))}</div>`:''}${d.why?`<div class="w">${esc(d.why)}</div>`:''}${d.url&&/^https?:\/\//.test(d.url)?`<a href="${esc(d.url)}" target="_blank" rel="noopener" class="buy">${/amazon\./.test(d.url)?'🛒 Buy on Amazon':'🛒 View / buy'} ↗</a>`:''}${d.addedBy||d.by?`<div class="w" style="font-size:11px">Added by ${esc(d.addedBy||d.by)}</div>`:''}</div><button class="x" title="Remove" onclick="delIdea('${esc(k.id)}',${i})">✕</button></div>`).join(''):`<div class="empty"><div class="big">🎁✨</div>Gift ideas are on the way!<br>Have one? Add it below.</div>`}</div>
-  <details class="add"><summary>＋ Add a gift idea or link</summary>
-   <label class="f">Idea</label><input id="i-title" placeholder="e.g. Magna-Tiles starter set">
+  <p class="muted" style="margin:10px 0 0">Keep boxes closed until opening day! 🎁</p></div>
+ <div class="card"><h2>💡 Suggested gifts for ${esc(k.name)} <span class="muted" style="font-family:Fredoka;font-weight:600">(~$20)</span></h2>
+  <div class="ideas">${ideas.length?ideas.map((d,i)=>ideaHTML(k,d,i)).join(''):`<div class="empty"><div class="big">🎁✨</div>No ideas yet. Add one below!</div>`}</div>
+  <details class="add"><summary>＋ Add a gift idea or wish</summary>
+   <label class="f">Idea or wish</label><input id="i-title" placeholder="e.g. Magna-Tiles, anything Frozen…">
    <div class="row" style="flex-wrap:nowrap"><div style="flex:1"><label class="f">Price</label><input id="i-price" inputmode="decimal" placeholder="$20"></div><div style="flex:2"><label class="f">Link (optional)</label><input id="i-url" type="url" placeholder="https://…"></div></div>
    <label class="f">Picture link (optional)</label><input id="i-image" type="url" placeholder="https://…jpg">
    <label class="f">Why it's a good fit (optional)</label><input id="i-why" placeholder="Loves building things">
-   <div class="row" style="margin-top:10px"><button class="btn green" onclick="addIdea('${esc(k.id)}')">Add idea</button></div></details></div>
- <div class="card"><h2>🔁 Change who ${esc(k.name)} buys for</h2>
-  <select id="newr"><option value="">Pick a kid…</option>${S.kids.filter(x=>x.id!==k.id).map(x=>`<option value="${esc(x.id)}" ${S.assign[k.id]===x.id?'selected':''}>${esc(x.name)} (${esc(ageTxt(x))})${excluded(k.id,x.id)?' ⛔ sibling':''}</option>`).join('')}</select>
-  <p class="muted">We'll swap with whoever had that kid, so everyone still gets exactly one gift.</p>
-  <button class="btn" onclick="reassign('${esc(k.id)}')">Swap</button></div>
- <div class="card"><h2>✏️ Edit ${esc(k.name)}</h2><div class="row" style="flex-wrap:nowrap"><div style="flex:2"><label class="f">Name</label><input id="e-name" value="${esc(k.name)}"></div><div style="flex:1"><label class="f">Age</label><input id="e-age" value="${esc(k.age)}" placeholder="7 or 4 mo"></div></div>
-  <div class="row" style="margin-top:10px;justify-content:space-between"><button class="btn small" onclick="editKid('${esc(k.id)}')">Save</button><button class="btn small red" onclick="removeKid('${esc(k.id)}')">Remove kid</button></div></div>`}
-function viewManage(){const opts=sel=>S.kids.map(x=>`<option value="${esc(x.id)}" ${sel===x.id?'selected':''}>${esc(x.name)} → ${esc((kid(S.assign[x.id])||{name:'nobody'}).name)}</option>`).join('');
- const p=problems();
- return`<header class="hero"><h1 style="font-size:34px"><span class="c">Swap & fix</span></h1><div id="sync" class="sync"></div></header>
- ${p.length?warnBox():`<div class="ok">✅ All good: ${Object.keys(S.assign).filter(g=>S.assign[g]).length} of ${S.kids.length} kids have drawn, no sibling pairs, nobody gets two.</div>`}
- <div class="card"><h2>🔀 Swap two buyers</h2><p class="muted" style="margin:-4px 0 6px">The two kids trade who they're buying for.</p>
-  <label class="f">First kid</label><select id="sw-a">${opts(S.kids[0]&&S.kids[0].id)}</select><label class="f">Second kid</label><select id="sw-b">${opts(S.kids[1]&&S.kids[1].id)}</select>
-  <div id="sw-prev" class="muted" style="margin:8px 0"></div><button class="btn" onclick="doSwap()">Swap them</button></div>
- <div class="card"><h2>⚙️ Reset or re-draw</h2><p class="muted" style="margin:-4px 0 10px">Resetting all draws or re-drawing everyone needs the organizer passcode.</p><button class="btn ghost" onclick="go('settings')">Open settings</button></div>
- <div class="card"><h2>👨‍👩‍👧 Sibling rules</h2><p class="muted" style="margin:-4px 0 6px">Kids in the same group never draw each other.</p>
-  ${S.exclusions.length?S.exclusions.map((g,i)=>`<div class="excl">${g.map(id=>`<span class="tag">${esc((kid(id)||{name:id}).name)}</span>`).join('')}<button class="btn small ghost" style="margin-left:auto" onclick="delGroup(${i})">Remove</button></div>`).join(''):'<div class="empty">No rules yet</div>'}
-  <details class="add"><summary>＋ Add a sibling group</summary><div class="checks">${S.kids.map(k=>`<label><input type="checkbox" value="${esc(k.id)}" class="gchk">${esc(k.name)}</label>`).join('')}</div><button class="btn green small" onclick="addGroup()">Add group</button></details></div>
- <div class="card"><h2>➕ Add a kid</h2><div class="row" style="flex-wrap:nowrap"><div style="flex:2"><label class="f">Name</label><input id="n-name" placeholder="Name"></div><div style="flex:1"><label class="f">Age</label><input id="n-age" placeholder="5"></div></div>
-  <p class="muted">They'll show up on the draw list (or get slotted in if everyone already drew).</p><button class="btn green" onclick="addKid()">Add kid</button></div>`}
+   <div class="row" style="margin-top:10px"><button class="btn green" onclick="addIdea('${esc(k.id)}')">Add idea</button></div></details></div>`}
 function viewLog(){return`<header class="hero"><h1 style="font-size:34px"><span class="c">Activity</span></h1><div id="sync" class="sync"></div></header><div class="card"><h2>📜 Recent changes</h2><div class="log">${(S.log||[]).map(l=>`<div><time>${new Date(l.t).toLocaleString([], {weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})} · ${esc(l.who)}</time>${esc(l.msg)}</div>`).join('')||'<div class="empty">No changes yet</div>'}</div></div>`}
 let SPIN=false;
 function drawCard(){const n=S.kids.length,left=Draw.undrawn(S);const done=n-left.length;
@@ -337,56 +322,91 @@ function confetti(){const c=$('#confetti'),x=c.getContext('2d');c.width=innerWid
   if(now-t0<3500)requestAnimationFrame(f);else x.clearRect(0,0,c.width,c.height)})(t0)}
 const CODE_H='1142e030a0b5e72ff7675440d5b9ce1346a8b355aae55765666d6d529406b7b5';
 async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
-async function checkCode(){const el=$('#pcode');const v=(el&&el.value||'').trim();if(v&&await sha(v)===CODE_H)return true;toast(v?'Wrong passcode':'Enter the organizer passcode');if(el){el.value='';el.focus()}return false}
-function viewSettings(){const n=Object.keys(S.assign).filter(g=>S.assign[g]).length;return`<div class="back"><button onclick="history.length>1?history.back():go('')">← Back</button></div>
- <header class="hero" style="padding-top:0"><h1 style="font-size:34px"><span class="c">⚙️ Settings</span></h1></header>
- <div class="card sheet"><h2>🔐 Organizer only</h2><p class="muted" style="margin:-4px 0 8px">${n} of ${S.kids.length} kids have drawn.</p>
-  <label class="f">Passcode</label><input id="pcode" class="code" type="password" inputmode="numeric" autocomplete="off" placeholder="••••">
-  <div style="display:grid;gap:12px;margin-top:14px">
+function isAdmin(){return localStorage.getItem('wkc-admin')==='1'}
+let PIN='';
+function viewSettings(){return isAdmin()?viewAdmin():viewPin()}
+function viewPin(){const L=['','ABC','DEF','GHI','JKL','MNO','PQRS','TUV','WXYZ'];return`<div class="back"><button onclick="history.length>1?history.back():go('')">← Back</button></div>
+ <div class="pin"><div class="lockic">🔒</div><div class="pt">Enter Passcode</div><div class="ps">Organizer settings</div>
+ <div class="dots" id="dots">${[0,1,2,3].map(i=>`<i class="${i<PIN.length?'on':''}"></i>`).join('')}</div>
+ <div class="pad">${[1,2,3,4,5,6,7,8,9].map(n=>`<button onclick="pinKey('${n}')"><b>${n}</b><small>${L[n-1]}</small></button>`).join('')}<span></span><button onclick="pinKey('0')"><b>0</b><small>+</small></button><button class="del" onclick="pinDel()">⌫</button></div></div>`}
+function pinDots(){const d=$('#dots');if(d)d.innerHTML=[0,1,2,3].map(i=>`<i class="${i<PIN.length?'on':''}"></i>`).join('')}
+async function pinKey(n){if(PIN.length>=4)return;PIN+=n;pinDots();try{navigator.vibrate&&navigator.vibrate(8)}catch(e){}
+ if(PIN.length===4){const ok=await sha(PIN)===CODE_H;await new Promise(r=>setTimeout(r,120));
+  if(ok){PIN='';localStorage.setItem('wkc-admin','1');toast('🔓 Admin unlocked');render()}
+  else{const d=$('#dots');d.classList.remove('shake');void d.offsetWidth;d.classList.add('shake');try{navigator.vibrate&&navigator.vibrate([70,50,70])}catch(e){}setTimeout(()=>{PIN='';pinDots();d.classList.remove('shake')},520)}}}
+function pinDel(){PIN=PIN.slice(0,-1);pinDots()}
+function lockAdmin(){localStorage.removeItem('wkc-admin');PIN='';toast('🔒 Locked');render()}
+function viewAdmin(){const n=Object.keys(S.assign).filter(g=>S.assign[g]).length;const d=S.openingDate;
+ const opts=sel=>S.kids.map(x=>`<option value="${esc(x.id)}" ${sel===x.id?'selected':''}>${esc(x.name)} → ${esc((kid(S.assign[x.id])||{name:'not drawn'}).name)}</option>`).join('');
+ const p=problems();
+ return`<div class="back"><button onclick="go('')">← Home</button></div>
+ <div class="adminbar"><span class="badge">🔓 Admin</span><button class="btn small ghost" onclick="lockAdmin()">🔒 Lock</button></div>
+ <header class="hero" style="padding-top:0"><h1 style="font-size:34px"><span class="c">Settings</span></h1></header>
+ ${p.length?warnBox():`<div class="ok">✅ ${n} of ${S.kids.length} kids have drawn. No sibling pairs, nobody gets two.</div>`}
+ <div class="card"><h2>📅 Opening day</h2><div class="row" style="flex-wrap:nowrap"><input type="date" id="odate" value="${esc(d||'')}"><button class="btn small" onclick="setOpening()">Save</button>${d?`<button class="btn small ghost" onclick="setOpening(true)">Clear</button>`:''}</div><p class="muted">${d?'Now: '+esc(fmtDate(d)):'Not set (shows “Date TBD”)'}</p></div>
+ <div class="card"><h2>🎡 Draws</h2><div style="display:grid;gap:12px">
    <button class="btn red" onclick="resetDraws()">🔄 Reset all draws</button>
-   <p class="muted" style="margin:-4px 0 0">Clears every draw and the Sent/Received marks. Kids, ages, sibling rules, wish lists and gift ideas stay.</p>
-   <button class="btn ghost" onclick="redraw()">🎲 Re-draw everyone at once (no wheel)</button></div></div>`}
-async function resetDraws(){if(!await checkCode())return;if(!confirm('Reset ALL draws? Everyone will need to spin again.'))return;
+   <p class="muted" style="margin:-4px 0 0">Clears every draw and the Sent/Received marks. Kids, ages, sibling rules and gift ideas stay.</p>
+   <button class="btn ghost" onclick="redraw()">🎲 Re-draw everyone at once (no wheel)</button></div></div>
+ <div class="card"><h2>🔀 Swap two kids</h2><p class="muted" style="margin:-4px 0 6px">The two kids trade who they're buying for.</p>
+  <label class="f">First kid</label><select id="sw-a">${opts(S.kids[0]&&S.kids[0].id)}</select><label class="f">Second kid</label><select id="sw-b">${opts(S.kids[1]&&S.kids[1].id)}</select>
+  <div id="sw-prev" class="muted" style="margin:8px 0"></div><button class="btn" onclick="doSwap()">Swap them</button></div>
+ <div class="card"><h2>🎯 Change who buys for whom</h2>
+  <label class="f">Giver</label><select id="ad-g">${S.kids.map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('')}</select>
+  <label class="f">Should buy for</label><select id="ad-r">${S.kids.map(x=>`<option value="${esc(x.id)}">${esc(x.name)} (${esc(ageTxt(x))})</option>`).join('')}</select>
+  <p class="muted">If someone else already has that kid, they get the giver's old name instead.</p><button class="btn" onclick="reassign($('#ad-g').value,$('#ad-r').value)">Change</button></div>
+ <div class="card"><h2>👧 Kids</h2>${S.kids.map(k=>`<details class="kidrow"><summary>${av(k)}<b>${esc(k.name)}</b><span class="muted">${esc(ageTxt(k))}</span></summary>
+   <div class="row" style="flex-wrap:nowrap"><div style="flex:2"><label class="f">Name</label><input id="en-${esc(k.id)}" value="${esc(k.name)}"></div><div style="flex:1"><label class="f">Age</label><input id="ea-${esc(k.id)}" value="${esc(k.age)}" placeholder="7 or 4 mo"></div></div>
+   <div class="row" style="margin-top:10px;justify-content:space-between"><button class="btn small" onclick="editKid('${esc(k.id)}')">Save</button><button class="btn small red" onclick="removeKid('${esc(k.id)}')">Remove kid</button></div>
+   <label class="f">Gift ideas (${(k.giftIdeas||[]).length})</label><div class="ideas">${(k.giftIdeas||[]).map((d,i)=>ideaHTML(k,d,i)).join('')||'<div class="muted">None</div>'}</div></details>`).join('')}
+  <details class="add"><summary>＋ Add a kid</summary><div class="row" style="flex-wrap:nowrap"><div style="flex:2"><label class="f">Name</label><input id="n-name" placeholder="Name"></div><div style="flex:1"><label class="f">Age</label><input id="n-age" placeholder="5"></div></div>
+  <p class="muted">They'll show up on the draw list (or get slotted in if everyone already drew).</p><button class="btn green" onclick="addKid()">Add kid</button></details></div>
+ <div class="card"><h2>👨‍👩‍👧 Sibling groups</h2><p class="muted" style="margin:-4px 0 6px">Kids in the same group never draw each other.</p>
+  ${S.exclusions.length?S.exclusions.map((g,i)=>`<div class="excl">${g.map(id=>`<span class="tag">${esc((kid(id)||{name:id}).name)}</span>`).join('')}<button class="btn small ghost" style="margin-left:auto" onclick="delGroup(${i})">Remove</button></div>`).join(''):'<div class="empty">No groups yet</div>'}
+  <details class="add"><summary>＋ Add a sibling group</summary><div class="checks">${S.kids.map(k=>`<label><input type="checkbox" value="${esc(k.id)}" class="gchk">${esc(k.name)}</label>`).join('')}</div><button class="btn green small" onclick="addGroup()">Add group</button></details></div>
+ <div class="card"><h2>📜 Activity log</h2><p class="muted" style="margin:-4px 0 10px">${(S.log||[]).length} entries.</p><button class="btn small ghost" onclick="clearLog()">🧹 Clear activity log</button></div>`}
+async function resetDraws(){if(!isAdmin())return go('settings');if(!confirm('Reset ALL draws? Everyone will need to spin again.'))return;
  mutate(st=>{st.assign={};st.kids.forEach(k=>{k.sent=false;k.received=false;k.note=''})},'🔄 Reset all draws (everyone can spin again)');setTimeout(()=>go(''),400)}
+function clearLog(){if(!isAdmin())return;if(!confirm('Clear the whole activity log?'))return;mutate(st=>{st.log=[]},'🧹 Cleared the activity log')}
 function render(){if(!S)return;const {v,id}=route();const app=$('#app');
- if(SPIN)return;app.innerHTML=v==='kid'?viewKid(id):v==='draw'?viewDraw(id):v==='settings'?viewSettings():v==='list'?viewList():v==='manage'?viewManage():v==='log'?viewLog():viewHome();nav();renderSync();
+ if(SPIN)return;app.innerHTML=v==='kid'?viewKid(id):v==='draw'?viewDraw(id):v==='settings'?viewSettings():v==='list'?viewList():v==='log'?viewLog():viewHome();nav();renderSync();
  app.querySelectorAll('[data-sent]').forEach(b=>b.onclick=e=>{e.stopPropagation();toggleSent(b.dataset.sent)});app.querySelectorAll('[data-recv]').forEach(b=>b.onclick=e=>{e.stopPropagation();toggleRecv(b.dataset.recv)});
- if(v==='manage'){const upd=()=>{const a=$('#sw-a').value,b=$('#sw-b').value;$('#sw-prev').innerHTML=swapPreview(a,b)};$('#sw-a').onchange=upd;$('#sw-b').onchange=upd;upd()}}
+ if(v==='settings'&&isAdmin()){const upd=()=>{const a=$('#sw-a').value,b=$('#sw-b').value;$('#sw-prev').innerHTML=swapPreview(a,b)};$('#sw-a').onchange=upd;$('#sw-b').onchange=upd;upd()}}
 // ---------- actions ----------
 function setName(){const n=$('#myname').value.trim();if(n){localStorage.setItem('wkc-name',n.slice(0,40));toast('Hi '+n+'!');render()}}
 function toggleSent(id){const k=kid(id),r=kid(S.assign[id]);if(!r)return;const v=!k.sent;mutate(st=>{const x=st.kids.find(q=>q.id===id);if(x)x.sent=v},`${k.name}'s gift to ${r.name}: ${v?'✅ sent':'marked not sent'}`)}
 function toggleRecv(gid){const g=kid(gid),r=kid(S.assign[gid]);if(!g||!r)return;const v=!g.received;mutate(st=>{const x=st.kids.find(q=>q.id===gid);if(x){x.received=v;if(v)x.sent=true}},`${r.name} ${v?'📦 received':'marked not received'} the gift from ${g.name}`);
  if(v){const n=daysTo(S.openingDate);setTimeout(()=>toast(n!==null&&n<=0?'📦 Received! It\'s opening day, go open it! 🎉':'📦 Received! Keep it closed until opening day! 🎁'),1200)}}
-function setOpening(clear){const v=clear?'':($('#odate').value||'');if(!clear&&!v){toast('Pick a date');return}mutate(st=>{st.openingDate=v},v?`Set opening day to ${fmtDate(v)}`:'Cleared the opening day')}
+function setOpening(clear){if(!isAdmin())return go('settings');const v=clear?'':($('#odate').value||'');if(!clear&&!v){toast('Pick a date');return}mutate(st=>{st.openingDate=v},v?`Set opening day to ${fmtDate(v)}`:'Cleared the opening day')}
 function saveField(id,f){const val=$('#'+f).value.slice(0,2000);const k=kid(id);mutate(st=>{const x=st.kids.find(q=>q.id===id);if(x)x[f]=val},`Updated ${k.name}'s ${f==='note'?'gift note':'wish list'}`)}
 function addIdea(id){const d={title:$('#i-title').value.trim().slice(0,140),price:$('#i-price').value.trim().slice(0,20),url:$('#i-url').value.trim().slice(0,600),image:$('#i-image').value.trim().slice(0,600),why:$('#i-why').value.trim().slice(0,300),by:me(),addedBy:me()||'Family'};if(!d.title){toast('Give the idea a name');return}
  if(d.url&&!/^https?:\/\//.test(d.url))d.url='https://'+d.url;if(d.image&&!/^https?:\/\//.test(d.image))d.image='';
  mutate(st=>{const x=st.kids.find(q=>q.id===id);if(x){x.giftIdeas=x.giftIdeas||[];x.giftIdeas.push(d)}},`Added gift idea for ${kid(id).name}: ${d.title}`)}
-function delIdea(id,i){const k=kid(id),d=k.giftIdeas[i];if(!d||!confirm(`Remove "${d.title}"?`))return;mutate(st=>{const x=st.kids.find(q=>q.id===id);if(x&&x.giftIdeas){const j=x.giftIdeas.findIndex(z=>z.title===d.title&&z.url===d.url);if(j>-1)x.giftIdeas.splice(j,1)}},`Removed gift idea for ${k.name}: ${d.title}`)}
+function delIdea(id,i){if(!isAdmin())return go('settings');const k=kid(id),d=k.giftIdeas[i];if(!d||!confirm(`Remove "${d.title}"?`))return;mutate(st=>{const x=st.kids.find(q=>q.id===id);if(x&&x.giftIdeas){const j=x.giftIdeas.findIndex(z=>z.title===d.title&&z.url===d.url);if(j>-1)x.giftIdeas.splice(j,1)}},`Removed gift idea for ${k.name}: ${d.title}`)}
 function swapPreview(a,b){if(!a||!b||a===b)return'Pick two different kids.';const ra=S.assign[b],rb=S.assign[a];const issues=[];if(ra===a)issues.push(`${kid(a).name} would get themself`);if(rb===b)issues.push(`${kid(b).name} would get themself`);if(ra&&excluded(a,ra))issues.push(`${kid(a).name} & ${kid(ra).name} are siblings`);if(rb&&excluded(b,rb))issues.push(`${kid(b).name} & ${kid(rb).name} are siblings`);
  return`After: <b>${esc(kid(a).name)} → ${esc((kid(ra)||{name:'nobody'}).name)}</b>, <b>${esc(kid(b).name)} → ${esc((kid(rb)||{name:'nobody'}).name)}</b>${issues.length?`<div style="color:#b45309;margin-top:4px">⚠️ ${issues.map(esc).join('; ')}</div>`:''}`}
-function doSwap(){const a=$('#sw-a').value,b=$('#sw-b').value;if(!a||!b||a===b){toast('Pick two different kids');return}
+function doSwap(){if(!isAdmin())return go('settings');const a=$('#sw-a').value,b=$('#sw-b').value;if(!a||!b||a===b){toast('Pick two different kids');return}
  const ra=S.assign[b],rb=S.assign[a];const bad=(ra&&excluded(a,ra))||(rb&&excluded(b,rb));if(bad&&!confirm('This breaks a sibling rule or has someone buying for themself. Do it anyway?'))return;
  mutate(st=>{const x=st.assign[a],y=st.assign[b];st.assign[a]=y;st.assign[b]=x;[a,b].forEach(id=>{const k=st.kids.find(q=>q.id===id);if(k){k.sent=false;k.received=false;k.note=''}})},`Swapped: ${kid(a).name} now buys for ${(kid(ra)||{name:'nobody'}).name}, ${kid(b).name} for ${(kid(rb)||{name:'nobody'}).name}`)}
-function reassign(id){const nr=$('#newr').value;if(!nr||nr===S.assign[id])return;const other=giverOf(nr).find(g=>g!==id);const old=S.assign[id];
+function reassign(id,nr){if(!isAdmin())return go('settings');if(!nr||nr===S.assign[id])return;if(nr===id){toast("Can't buy for themself");return}const other=giverOf(nr).find(g=>g!==id);const old=S.assign[id];
  const sim=JSON.parse(JSON.stringify(S));sim.assign[id]=nr;if(other)sim.assign[other]=old;const before=problems().length,after=problems(sim);
  let msg=`${kid(id).name} will buy for ${kid(nr).name}`+(other?`, and ${kid(other).name} takes ${(kid(old)||{name:'nobody'}).name}.`:'.');
  if(after.length)msg+=`\n\n⚠️ Heads up:\n• `+after.join('\n• ');
  if(!confirm(msg+'\n\nGo ahead?'))return;
  mutate(st=>{const o=Object.keys(st.assign).find(g=>g!==id&&st.assign[g]===nr);const prev=st.assign[id];st.assign[id]=nr;if(o)st.assign[o]=prev;[id,o].forEach(q=>{const k=st.kids.find(z=>z.id===q);if(k){k.sent=false;k.received=false;k.note=''}})},`${kid(id).name} now buys for ${kid(nr).name}`+(other?` (${kid(other).name} now buys for ${(kid(old)||{name:'nobody'}).name})`:''))}
-async function redraw(){if(!await checkCode())return;if(!confirm('Re-draw EVERYONE at once? This replaces all draws and resets Sent/Received & notes.'))return;const a=makeDraw();if(!a){toast("Can't find a draw with these rules");return}
+async function redraw(){if(!isAdmin())return go('settings');if(!confirm('Re-draw EVERYONE at once? This replaces all draws and resets Sent/Received & notes.'))return;const a=makeDraw();if(!a){toast("Can't find a draw with these rules");return}
  mutate(st=>{st.assign=a;st.kids.forEach(k=>{k.sent=false;k.received=false;k.note=''})},'Re-drew everyone (new random gift circle)')}
-function editKid(id){const n=$('#e-name').value.trim().slice(0,40),a=$('#e-age').value.trim().slice(0,12);if(!n){toast('Name needed');return}const old=kid(id).name;mutate(st=>{const k=st.kids.find(q=>q.id===id);if(k){k.name=n;k.age=a}},`Edited ${old}${old!==n?' → '+n:''} (age ${a})`)}
-function removeKid(id){const k=kid(id);if(!confirm(`Remove ${k.name} from the exchange? We'll close the gap so the circle still works.`))return;
+function editKid(id){if(!isAdmin())return go('settings');const n=$('#en-'+id).value.trim().slice(0,40),a=$('#ea-'+id).value.trim().slice(0,12);if(!n){toast('Name needed');return}const old=kid(id).name;mutate(st=>{const k=st.kids.find(q=>q.id===id);if(k){k.name=n;k.age=a}},`Edited ${old}${old!==n?' → '+n:''} (age ${a})`)}
+function removeKid(id){if(!isAdmin())return go('settings');const k=kid(id);if(!confirm(`Remove ${k.name} from the exchange? We'll close the gap so the circle still works.`))return;
  mutate(st=>{const g=Object.keys(st.assign).find(x=>st.assign[x]===id);const r=st.assign[id];delete st.assign[id];if(g&&r&&r!==g)st.assign[g]=r;else if(g)delete st.assign[g];st.kids=st.kids.filter(q=>q.id!==id);st.exclusions=st.exclusions.map(gr=>gr.filter(x=>x!==id)).filter(gr=>gr.length>1)},`Removed ${k.name}`);go('')}
-function addKid(){const n=$('#n-name').value.trim().slice(0,40),a=$('#n-age').value.trim().slice(0,12);if(!n){toast('Name needed');return}
+function addKid(){if(!isAdmin())return go('settings');const n=$('#n-name').value.trim().slice(0,40),a=$('#n-age').value.trim().slice(0,12);if(!n){toast('Name needed');return}
  let id=n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'kid';while(kid(id))id+='-2';
  mutate(st=>{st.kids.push({id,name:n,age:a,sent:false,received:false,note:'',wishlist:'',giftIdeas:[]});
   // splice into the circle: find a giver g where g->id and id->r are allowed
   const allDrawn=st.kids.every(q=>q.id===id||st.assign[q.id]);if(allDrawn){const gs=shuffle(Object.keys(st.assign));const g=gs.find(x=>!excluded(x,id)&&!excluded(id,st.assign[x]));if(g){st.assign[id]=st.assign[g];st.assign[g]=id}}},`Added ${n}${a?' ('+a+')':''}`);toast('Added '+n)}
-function addGroup(){const ids=[...document.querySelectorAll('.gchk:checked')].map(c=>c.value);if(ids.length<2){toast('Pick at least 2 kids');return}
+function addGroup(){if(!isAdmin())return go('settings');const ids=[...document.querySelectorAll('.gchk:checked')].map(c=>c.value);if(ids.length<2){toast('Pick at least 2 kids');return}
  mutate(st=>{st.exclusions.push(ids)},`Added sibling rule: ${ids.map(i=>kid(i).name).join(', ')}`)}
-function delGroup(i){const g=S.exclusions[i];if(!confirm('Remove this sibling rule?'))return;mutate(st=>{st.exclusions=st.exclusions.filter(x=>JSON.stringify(x)!==JSON.stringify(g))},`Removed sibling rule: ${g.map(i=>(kid(i)||{name:i}).name).join(', ')}`)}
+function delGroup(i){if(!isAdmin())return go('settings');const g=S.exclusions[i];if(!confirm('Remove this sibling rule?'))return;mutate(st=>{st.exclusions=st.exclusions.filter(x=>JSON.stringify(x)!==JSON.stringify(g))},`Removed sibling rule: ${g.map(i=>(kid(i)||{name:i}).name).join(', ')}`)}
 // ---------- snow ----------
 (()=>{const c=$('#snow'),x=c.getContext('2d');let W,H,f=[];const R=()=>{W=c.width=innerWidth;H=c.height=innerHeight};R();addEventListener('resize',R);
  for(let i=0;i<60;i++)f.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2.2+.6,s:Math.random()*.6+.25,d:Math.random()*6.28});

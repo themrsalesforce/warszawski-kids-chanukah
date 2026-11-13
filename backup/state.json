@@ -1,6 +1,9 @@
 {
  "app": "wkc",
- "assign": {},
+ "assign": {
+  "abie": "bella",
+  "ella": "isaac"
+ },
  "exclusions": [
   [
    "abie",
@@ -285,6 +288,14 @@
      "title": "Exploding Kittens Rage Mode Card Game (Ages 7+)",
      "url": "https://www.amazon.com/dp/B09R3QNLR9",
      "why": "Silly, fast card game rated 7+ that siblings and cousins can play together."
+    },
+    {
+     "addedBy": "From family",
+     "image": "",
+     "price": "",
+     "title": "lego",
+     "url": "",
+     "why": ""
     }
    ],
    "id": "abie",
@@ -292,7 +303,7 @@
    "note": "",
    "received": false,
    "sent": false,
-   "wishlist": "lego"
+   "wishlist": ""
   },
   {
    "age": "4",
@@ -320,6 +331,30 @@
      "title": "Hot Wheels ZipBin Car Storage Box & Playmat with Ramp",
      "url": "https://www.amazon.com/dp/B0CYM7RCHL",
      "why": "Ages 3+ car case that unzips into a 21-inch race mat with a ramp."
+    },
+    {
+     "addedBy": "From family",
+     "image": "",
+     "price": "",
+     "title": "cars",
+     "url": "",
+     "why": ""
+    },
+    {
+     "addedBy": "From family",
+     "image": "",
+     "price": "",
+     "title": "coloring",
+     "url": "",
+     "why": ""
+    },
+    {
+     "addedBy": "From family",
+     "image": "",
+     "price": "",
+     "title": "lego",
+     "url": "",
+     "why": ""
     }
    ],
    "id": "mika",
@@ -327,7 +362,7 @@
    "note": "",
    "received": false,
    "sent": false,
-   "wishlist": "cars, coloring, lego\n"
+   "wishlist": ""
   },
   {
    "age": "4",
@@ -612,6 +647,21 @@
  ],
  "log": [
   {
+   "msg": "Simplified kid pages: wish lists moved into Suggested gifts (marked From family)",
+   "t": "2026-11-13T00:28:18.114272+00:00",
+   "who": "Grok Bot"
+  },
+  {
+   "msg": "\ud83c\udfa1 Abie drew Bella!",
+   "t": "2026-11-13T00:25:39.267Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "\ud83c\udfa1 Ella drew Isaac!",
+   "t": "2026-11-13T00:24:06.442Z",
+   "who": "Someone"
+  },
+  {
    "msg": "\ud83c\udfa1 New: spin-the-wheel draw! Everyone starts undrawn, tap your kid to spin",
    "t": "2026-11-13T00:20:09.065949+00:00",
    "who": "Grok Bot"
@@ -643,7 +693,7 @@
   }
  ],
  "openingDate": "",
- "rev": 27,
+ "rev": 30,
  "schema": 2,
- "updatedAt": "2026-11-13T00:23:02.915327+00:00"
+ "updatedAt": "2026-11-13T00:28:18.114272+00:00"
 }
