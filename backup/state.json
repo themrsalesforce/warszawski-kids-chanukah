@@ -3,9 +3,15 @@
  "assign": {
   "abie": "sara",
   "ari": "abie",
+  "bailey": "isaac",
+  "bella": "bailey",
   "chana": "ella",
   "ella": "menachem",
+  "isaac": "mika",
+  "mollie": "yisroel",
   "nesya": "chana",
+  "rocky": "nesya",
+  "shaina": "noa",
   "shalom": "rocky"
  },
  "exclusions": [
@@ -47,6 +53,15 @@
      "title": "Craft Crush Friendship Bracelet Making Kit (Ages 13+)",
      "url": "https://www.amazon.com/dp/B095Z132FN",
      "why": "Rated 13+, a trendy bracelet-making kit perfect for sleepovers and making sets for friends."
+    },
+    {
+     "addedBy": "Family",
+     "by": "",
+     "image": "",
+     "price": "",
+     "title": "Defining curl brush",
+     "url": "",
+     "why": ""
     }
    ],
    "id": "mollie",
@@ -117,6 +132,15 @@
      "title": "Melissa & Doug Build-A-House Wooden Toolbox",
      "url": "https://www.amazon.com/dp/B0G4XLT29N",
      "why": "Wooden pretend-play tool and building set; sturdy, no batteries."
+    },
+    {
+     "addedBy": "Family",
+     "by": "",
+     "image": "",
+     "price": "",
+     "title": "Hot wheels",
+     "url": "",
+     "why": ""
     }
    ],
    "id": "isaac",
@@ -215,7 +239,7 @@
    "wishlist": ""
   },
   {
-   "age": "5",
+   "age": "4",
    "giftIdeas": [
     {
      "addedBy": "Product Hunter",
@@ -293,6 +317,15 @@
      "title": "Klutz Mini Clay World Kitty Condo",
      "url": "https://www.amazon.com/dp/B0GLKC19LG",
      "why": "Klutz clay-sculpting kit (cousin of the Clay Charms idea) to build a tiny kitty apartment."
+    },
+    {
+     "addedBy": "Family",
+     "by": "",
+     "image": "",
+     "price": "9.99",
+     "title": "$9.99 Price history Two-Day FREE delivery Saturday, November 14. Order within 3 hrs 51 mins green leafShorter shipping distance  Deliver to ",
+     "url": "",
+     "why": "stress relief"
     }
    ],
    "id": "ella",
@@ -334,6 +367,15 @@
      "image": "",
      "price": "",
      "title": "lego",
+     "url": "",
+     "why": ""
+    },
+    {
+     "addedBy": "Family",
+     "by": "",
+     "image": "",
+     "price": "20",
+     "title": "Remote control car",
      "url": "",
      "why": ""
     }
@@ -650,7 +692,7 @@
    "wishlist": ""
   },
   {
-   "age": "4 mo",
+   "age": "6 mo",
    "giftIdeas": [
     {
      "addedBy": "Product Hunter",
@@ -685,7 +727,104 @@
    "wishlist": ""
   }
  ],
+ "lastShow": {
+  "at": 1794532473695,
+  "g": "bella",
+  "names": [
+   "Mollie",
+   "Ari",
+   "Shalom",
+   "Shaina",
+   "Bailey"
+  ],
+  "r": "bailey"
+ },
  "log": [
+  {
+   "msg": "Updated ages: Bella 6 months, Chana 4",
+   "t": "2026-11-13T01:53:47.814396Z",
+   "who": "Grok Bot"
+  },
+  {
+   "msg": "Added gift idea for Ella: $9.99 Price history Two-Day FREE delivery Saturday, November 14. Order within 3 hrs 51 mins green leafShorter shipping distance  Deliver to ",
+   "t": "2026-11-13T01:25:47.529Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "Added gift idea for Isaac: Hot wheels",
+   "t": "2026-11-13T01:23:07.469Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "Added gift idea for Mollie: Defining curl brush",
+   "t": "2026-11-13T01:22:39.234Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "\ud83c\udfa1 Bella drew Bailey!",
+   "t": "2026-11-13T01:14:33.695Z",
+   "who": "Live draw"
+  },
+  {
+   "msg": "\ud83d\ude4b Bella joined the draw line",
+   "t": "2026-11-13T01:14:32.469Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "\ud83c\udfa1 Mollie drew Yisroel!",
+   "t": "2026-11-13T01:14:17.421Z",
+   "who": "Live draw"
+  },
+  {
+   "msg": "\ud83d\ude4b Mollie joined the draw line",
+   "t": "2026-11-13T01:14:15.090Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "\ud83c\udfa1 Rocky drew Nesya!",
+   "t": "2026-11-13T01:13:57.150Z",
+   "who": "Live draw"
+  },
+  {
+   "msg": "\ud83d\ude4b Rocky joined the draw line",
+   "t": "2026-11-13T01:13:56.586Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "\ud83c\udfa1 Isaac drew Mika!",
+   "t": "2026-11-13T01:13:24.179Z",
+   "who": "Live draw"
+  },
+  {
+   "msg": "\ud83d\ude4b Isaac joined the draw line",
+   "t": "2026-11-13T01:13:23.342Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "\ud83c\udfa1 Shaina drew Noa!",
+   "t": "2026-11-13T01:08:12.848Z",
+   "who": "Live draw"
+  },
+  {
+   "msg": "\ud83d\ude4b Shaina joined the draw line",
+   "t": "2026-11-13T01:07:56.467Z",
+   "who": "Bailey"
+  },
+  {
+   "msg": "\ud83c\udfa1 Bailey drew Isaac!",
+   "t": "2026-11-13T01:07:56.158Z",
+   "who": "Live draw"
+  },
+  {
+   "msg": "\ud83d\ude4b Bailey joined the draw line",
+   "t": "2026-11-13T01:07:53.974Z",
+   "who": "Bailey"
+  },
+  {
+   "msg": "Added gift idea for Abie: Remote control car",
+   "t": "2026-11-13T01:06:44.623Z",
+   "who": "Someone"
+  },
   {
    "msg": "Added gift idea for Shalom: Hypershot game",
    "t": "2026-11-13T01:05:07.208Z",
@@ -839,8 +978,8 @@
  ],
  "openingDate": "",
  "queue": [],
- "rev": 51,
+ "rev": 68,
  "schema": 2,
  "spinsOpenAt": "2026-11-13T01:00:00.000Z",
- "updatedAt": "2026-11-13T01:05:07.208Z"
+ "updatedAt": "2026-11-13T01:53:47.814396Z"
 }
