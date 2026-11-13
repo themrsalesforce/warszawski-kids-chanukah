@@ -21,7 +21,7 @@ body{font-family:Fredoka,system-ui,sans-serif;color:var(--ink);background:var(--
 header.hero{color:#fff;text-align:center;padding:26px 6px 8px}
 .hero h1{font-family:Grandstander,Fredoka,sans-serif;font-weight:900;font-size:clamp(30px,9vw,46px);line-height:.98;margin:8px 0 6px;letter-spacing:.5px;text-shadow:0 3px 0 #06122e}
 .hero h1 .k{color:var(--gold)}
-.hero h1 .c{background:linear-gradient(90deg,#8fc3ff,#fff 45%,#ff8a8a 70%,#7be3a4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .c{text-shadow:none;filter:drop-shadow(0 3px 0 #06122e);background:linear-gradient(90deg,#8fc3ff,#fff 45%,#ff8a8a 70%,#7be3a4);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p{margin:4px 0 0;color:#c9d8ff;font-size:15px}
 .menorah{width:min(260px,70vw);height:auto;display:block;margin:0 auto}
 .flame{transform-origin:50% 100%;animation:fl 1.4s ease-in-out infinite alternate}
@@ -190,7 +190,7 @@ function viewKid(id){const k=kid(id);if(!k)return`<div class="back"><button oncl
  const r=kid(S.assign[k.id]);const gs=giverOf(k.id).map(kid).filter(Boolean);const g=gs[0];
  const ideas=(k.giftIdeas||[]);
  return`<div class="back"><button onclick="history.length>1?history.back():go('')">← Back</button><button onclick="go('')">🕎 Home</button></div>
- <div class="prof">${av(k,'lg')}<h1>${esc(k.name)}</h1><div class="age">${esc(ageTxt(k))}</div></div>
+ <div class="prof">${av(k,'lg')}<h1>${esc(k.name)}</h1><div class="age">${esc(ageTxt(k))}${/mo/i.test(k.age||'')?' · Mom & Dad shop for '+esc(k.name):''}</div></div>
  <div class="links" style="margin-top:14px">
   <button class="link give" ${r?`onclick="go('kid/${esc(r.id)}')"`:''}><small>🎁 ${esc(k.name)} gives to</small><span class="who2">${av(r)}<span><b>${r?esc(r.name):'Nobody yet'}</b><em>${r?esc(ageTxt(r)):'Pick below'}</em></span></span></button>
   <button class="link get" ${g?`onclick="go('kid/${esc(g.id)}')"`:''}><small>🎉 ${esc(k.name)} gets from</small><span class="who2">${av(g)}<span><b>${g?esc(g.name)+(gs.length>1?' +'+(gs.length-1):''):'Nobody yet'}</b><em>${g?esc(ageTxt(g)):'Needs fixing'}</em></span></span></button>
