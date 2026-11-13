@@ -1,9 +1,6 @@
 {
  "app": "wkc",
- "assign": {
-  "abie": "bella",
-  "ella": "isaac"
- },
+ "assign": {},
  "exclusions": [
   [
    "abie",
@@ -647,6 +644,16 @@
  ],
  "log": [
   {
+   "msg": "\u23f0 The big draw starts tonight at 8:00 PM. Join the line!",
+   "t": "2026-11-13T00:47:22.306294+00:00",
+   "who": "Grok Bot"
+  },
+  {
+   "msg": "\ud83d\udd04 Reset all draws (everyone can spin again)",
+   "t": "2026-11-13T00:30:48.564Z",
+   "who": "Someone"
+  },
+  {
    "msg": "Simplified kid pages: wish lists moved into Suggested gifts (marked From family)",
    "t": "2026-11-13T00:28:18.114272+00:00",
    "who": "Grok Bot"
@@ -693,7 +700,9 @@
   }
  ],
  "openingDate": "",
- "rev": 30,
+ "queue": [],
+ "rev": 32,
  "schema": 2,
- "updatedAt": "2026-11-13T00:28:18.114272+00:00"
+ "spinsOpenAt": "2026-11-13T01:00:00.000Z",
+ "updatedAt": "2026-11-13T00:47:22.306294+00:00"
 }
