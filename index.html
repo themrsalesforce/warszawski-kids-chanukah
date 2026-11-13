@@ -162,6 +162,29 @@ details.add summary::-webkit-details-marker{display:none}
 .adminbar{display:flex;justify-content:space-between;align-items:center;margin:4px 0}.badge{background:var(--gold);color:#2b1300;font-weight:700;border-radius:99px;padding:6px 12px;font-size:14px}
 details.kidrow{border-bottom:1px dashed #dde3ef;padding:8px 0}details.kidrow summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none}details.kidrow summary::-webkit-details-marker{display:none}
 details.kidrow summary .av{width:34px;height:34px;font-size:15px}details.kidrow summary .av small{font-size:12px}
+.qbox{background:#f3f6fc;border-radius:16px;padding:10px 12px}.qh{font-weight:700;font-size:14px;margin-bottom:6px}
+.qlist{list-style:none;margin:0;padding:0;display:grid;gap:6px}.qlist li{display:flex;align-items:center;gap:8px;background:#fff;border-radius:12px;padding:6px 8px;font-size:15px;animation:pop .4s}
+.qlist li.me{outline:2px solid var(--gold)}.qlist .qn{font-family:Grandstander,sans-serif;font-weight:900;color:var(--red);width:22px;text-align:center}.qlist .av{width:30px;height:30px;font-size:13px}.qlist .av small{font-size:11px}
+.qlist em{font-style:normal;font-size:11px;font-weight:700;background:var(--gold);border-radius:99px;padding:2px 8px;margin-left:auto}.qlist em.nx{background:var(--red);color:#fff}.qempty{color:var(--muted);font-size:14px}
+.chip.inq{border:2px solid var(--gold)!important;background:#fff8e1!important}
+#splash{position:fixed;inset:0;z-index:40;background:radial-gradient(ellipse at 50% 20%,#1d3f8f 0%,#0b1f4b 55%,#06122e 100%);color:#fff;overflow:auto;-webkit-overflow-scrolling:touch;transition:opacity .6s,transform .6s}
+#splash.out{opacity:0;transform:scale(1.25)}
+.sp{min-height:100%;display:flex;align-items:center;justify-content:center;padding:28px 16px calc(28px + env(safe-area-inset-bottom));position:relative}
+.spin{position:relative;z-index:1;text-align:center;max-width:460px;width:100%}
+.spin .menorah{width:min(200px,55vw);animation:glow 2s ease-in-out infinite alternate}@keyframes glow{to{filter:drop-shadow(0 0 18px rgba(255,201,60,.7))}}
+.gr{font-family:Grandstander,sans-serif;font-weight:900;font-size:clamp(30px,9vw,44px);color:var(--gold);margin-top:6px;text-shadow:0 3px 0 #06122e}
+.tl{font-size:17px;color:#c9d8ff;margin-top:4px}
+.cd{font-family:Grandstander,sans-serif;font-weight:900;font-size:clamp(56px,20vw,96px);line-height:1;margin:14px 0 6px;background:linear-gradient(180deg,#fff,#8fc3ff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 0 #06122e);animation:beat 1s ease-in-out infinite;font-variant-numeric:tabular-nums}
+.cd.go{background:linear-gradient(90deg,#ffc93c,#ff8a8a,#7be3a4);-webkit-background-clip:text;background-clip:text;animation:pop .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.at{display:inline-block;background:rgba(255,255,255,.14);border-radius:99px;padding:6px 14px;font-weight:600;font-size:15px}
+.spq,.spj{background:rgba(255,255,255,.95);color:var(--ink);border-radius:18px;padding:12px;margin-top:16px;text-align:left}
+.mini{display:flex;flex-wrap:wrap;gap:6px}.mini button{border:0;background:#eef2fa;border-radius:99px;padding:8px 12px;font:600 14px Fredoka,sans-serif;color:var(--ink);cursor:pointer}.mini button:active{background:var(--gold)}
+.peek{margin-top:16px;border:0;background:none;color:#c9d8ff;font:600 15px Fredoka,sans-serif;text-decoration:underline;cursor:pointer}
+.spk{position:fixed;inset:0;pointer-events:none;overflow:hidden}.spk span{position:absolute;top:-40px;font-size:24px;animation:fall linear infinite;opacity:.85}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+#show{position:fixed;inset:0;z-index:45;background:rgba(6,18,46,.97);overflow:auto;padding:20px 14px}.showin{max-width:460px;margin:0 auto}
+.live{display:inline-block;background:var(--red);color:#fff;font-weight:700;border-radius:99px;padding:4px 12px;font-size:13px;animation:beat 1s infinite;margin-left:50%;transform:translateX(-50%)}
 .filter{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:6px}
 .filter button{border:0;border-radius:99px;padding:6px 12px;font:600 13px Fredoka,sans-serif;background:#eef2fa;color:var(--ink);white-space:nowrap;cursor:pointer}
 .filter button.on{background:var(--navy);color:#fff}
@@ -171,6 +194,8 @@ details.kidrow summary .av{width:34px;height:34px;font-size:15px}details.kidrow 
 <canvas id="snow"></canvas>
 <div class="wrap" id="app"><div class="hero" style="color:#fff;text-align:center;padding-top:80px">Lighting the candles… 🕎</div></div>
 <button class="gear" onclick="go('settings')" aria-label="Settings">⚙️</button>
+<div id="splash" hidden></div>
+<div id="show" hidden></div>
 <canvas id="confetti"></canvas>
 <nav class="nav" id="nav"></nav>
 <div class="toast" id="toast"></div>
@@ -178,7 +203,7 @@ details.kidrow summary .av{width:34px;height:34px;font-size:15px}details.kidrow 
 <script>
 const DATA_URL='https://textdb.dev/api/data/wkc-847f82d92bbd410787b5a9eaea59feac';
 const BACKUP_URL='backup/state.json';
-function migrate(st){if(!st)return st;st.kids.forEach(k=>{if('status' in k)delete k.status;k.sent=!!k.sent;k.received=!!k.received;k.giftIdeas=k.giftIdeas||[]});if(!('openingDate' in st))st.openingDate='';st.schema=2;return st}
+function migrate(st){if(!st)return st;st.kids.forEach(k=>{if('status' in k)delete k.status;k.sent=!!k.sent;k.received=!!k.received;k.giftIdeas=k.giftIdeas||[]});if(!('openingDate' in st))st.openingDate='';st.queue=st.queue||[];if(!('spinsOpenAt' in st))st.spinsOpenAt='';st.schema=2;return st}
 function fmtDate(s){if(!s)return'';const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d).toLocaleDateString([], {weekday:'long',month:'long',day:'numeric'})}
 function daysTo(s){if(!s)return null;const [y,m,d]=s.split('-').map(Number);const t=new Date();const a=new Date(t.getFullYear(),t.getMonth(),t.getDate());return Math.round((new Date(y,m-1,d)-a)/864e5)}
 function fmtPrice(p){if(p===''||p==null)return'';const n=parseFloat(String(p).replace(/[^0-9.]/g,''));return isNaN(n)?String(p):'$'+n.toFixed(2)}
@@ -204,7 +229,7 @@ function problems(st=S){const out=[];const ids=st.kids.map(k=>k.id);const name=i
 // ---------- storage ----------
 async function fetchRemote(){const r=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const t=(await r.text()).trim();if(!t)return null;const j=JSON.parse(t);if(!j||j.app!=='wkc')throw new Error('bad data');return migrate(j)}
 async function pushRemote(st){const r=await fetch(DATA_URL,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(st)});if(!r.ok)throw new Error('HTTP '+r.status)}
-async function load(){try{let j=await fetchRemote();if(!j){try{j=await (await fetch(BACKUP_URL+'?t='+Date.now(),{cache:'no-store'})).json();if(!j||j.app!=='wkc')throw 0}catch(_){j=await (await fetch('seed.json',{cache:'no-store'})).json()}await pushRemote(j)}S=migrate(j);readOnly=false;lastSync=new Date()}catch(e){console.warn(e);try{S=await (await fetch(BACKUP_URL+'?t='+Date.now(),{cache:'no-store'})).json();readOnly=true}catch(e2){S=await (await fetch('seed.json')).json();readOnly=true}migrate(S)}render()}
+async function load(){try{let j=await fetchRemote();if(!j){try{j=await (await fetch(BACKUP_URL+'?t='+Date.now(),{cache:'no-store'})).json();if(!j||j.app!=='wkc')throw 0}catch(_){j=await (await fetch('seed.json',{cache:'no-store'})).json()}await pushRemote(j)}S=migrate(j);readOnly=false;lastSync=new Date()}catch(e){console.warn(e);try{S=await (await fetch(BACKUP_URL+'?t='+Date.now(),{cache:'no-store'})).json();readOnly=true}catch(e2){S=await (await fetch('seed.json')).json();readOnly=true}migrate(S)}const ls=S.lastShow;seenShow=ls&&Date.now()-ls.at>30000?ls.at:null;render();checkShow();updateSplash(true)}
 async function mutate(fn,msg){if(readOnly){toast('Offline right now, try again in a minute');return}
  pending.push({fn,msg});if(busy)return;busy=true;
  try{while(pending.length){const batch=pending.splice(0);let cur;try{cur=await fetchRemote()||S}catch(e){cur=S}
@@ -212,7 +237,7 @@ async function mutate(fn,msg){if(readOnly){toast('Offline right now, try again i
   cur.rev=(cur.rev||0)+1;cur.updatedAt=new Date().toISOString();S=cur;render();await pushRemote(cur);lastSync=new Date()}
   toast('Saved ✓ everyone can see it')}catch(e){console.error(e);toast('Could not save, check your connection')}finally{busy=false;renderSync()}}
 async function poll(){if(document.hidden||busy||readOnly&&!S)return;try{const j=await fetchRemote();lastSync=new Date();if(readOnly){readOnly=false}
- if(j&&(j.rev!==S.rev||j.updatedAt!==S.updatedAt)){S=j;const a=document.activeElement;if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)){window._dirty=true}else render()}else renderSync()}catch(e){}}
+ if(j&&(j.rev!==S.rev||j.updatedAt!==S.updatedAt)){S=j;checkShow();updateSplash(true);if(showing)return;const a=document.activeElement;if(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)){window._dirty=true}else render()}else renderSync()}catch(e){}}
 setInterval(poll,5000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});
 document.addEventListener('focusout',()=>setTimeout(()=>{if(window._dirty&&!/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||'')){window._dirty=false;render()}},300));
 // ---------- draw ----------
@@ -232,7 +257,7 @@ function openBanner(){const d=S.openingDate,n=daysTo(d);const isGo=d&&n<=0;
  return`<div class="open ${isGo?'go':''}" id="openb">${isGo?`<div class="t1">🎉 Time to open! 🎁</div><div class="t2">Opening day ${n===0?'is today':'was '+esc(fmtDate(d))}! Rip into those boxes 🕎🎄</div>`:`<div class="t1">Keep boxes closed! 🎁</div><div class="t2">Opening day: <b>${d?esc(fmtDate(d)):'Date TBD'}</b></div>${d?`<div class="n">${n}</div><div class="t2">${n===1?'day':'days'} to go</div>`:''}`}
  </div>`}
 function renderSync(){const el=$('#sync');if(!el)return;el.className='sync'+(readOnly?' off':'');el.innerHTML=readOnly?'<i></i>Showing the last saved copy, live sync is reconnecting…':`<i></i>Live: everyone sees changes${lastSync?' · synced '+lastSync.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}):''}`}
-function nav(){const v=route().v;$('#nav').innerHTML=[['home','🕎','Home'],['list','🎁','All gifts'],['log','📜','Activity']].map(([k,e,l])=>`<button class="${v===k?'on':''}" onclick="go('${k==='home'?'':k}')"><span class="e">${e}</span>${l}</button>`).join('')}
+function nav(){const v=route().v;$('#nav').innerHTML=[['home','🕎','Home'],['list','🎁','All gifts']].concat(isAdmin()?[['log','📜','Activity']]:[]).map(([k,e,l])=>`<button class="${v===k?'on':''}" onclick="go('${k==='home'?'':k}')"><span class="e">${e}</span>${l}</button>`).join('')}
 function progressCard(){const n=S.kids.length,s=S.kids.filter(k=>k.sent).length,r=S.kids.filter(k=>k.received).length;
  return`<div class="card progress"><h2>📮 Gift progress</h2><div class="big" style="font-size:22px">✅ ${s} of ${n} sent · 📦 ${r} of ${n} received</div>
  <div class="muted" style="margin:8px 0 4px">Sent</div><div class="bar"><i style="width:${n?s/n*100:0}%;background:var(--green)"></i></div>
@@ -272,10 +297,29 @@ function viewKid(id){const k=kid(id);if(!k)return`<div class="back"><button oncl
    <div class="row" style="margin-top:10px"><button class="btn green" onclick="addIdea('${esc(k.id)}')">Add idea</button></div></details></div>`}
 function viewLog(){return`<header class="hero"><h1 style="font-size:34px"><span class="c">Activity</span></h1><div id="sync" class="sync"></div></header><div class="card"><h2>📜 Recent changes</h2><div class="log">${(S.log||[]).map(l=>`<div><time>${new Date(l.t).toLocaleString([], {weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})} · ${esc(l.who)}</time>${esc(l.msg)}</div>`).join('')||'<div class="empty">No changes yet</div>'}</div></div>`}
 let SPIN=false;
-function drawCard(){const n=S.kids.length,left=Draw.undrawn(S);const done=n-left.length;
+const SLOT=15000;
+function openAt(){return S&&S.spinsOpenAt?new Date(S.spinsOpenAt).getTime():0}
+function isLocked(){const o=openAt();return !!o&&Date.now()<o}
+function queueIds(st=S){return (st.queue||[]).map(q=>q.id).filter(id=>st.kids.some(k=>k.id===id)&&!st.assign[id])}
+function mine(){try{return JSON.parse(localStorage.getItem('wkc-mine')||'[]')}catch(e){return[]}}
+function fmtTime(ts){return new Date(ts).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})}
+function etaFor(id){const q=queueIds();const i=q.indexOf(id);if(i<0)return null;const base=isLocked()?openAt():Math.max(Date.now(),((S.lastShow&&S.lastShow.at)||0)+SLOT);return base+i*SLOT}
+function lineMsg(id){const q=queueIds(),i=q.indexOf(id);if(i<0)return'';const t=etaFor(id);return isLocked()?`You're #${i+1} in line, spinning at ${i===0?'':'about '}${fmtTime(t)}!`:(i===0?'You\'re up next! Watch the live wheel 🎡':`You're #${i+1} in line, spinning in about ${Math.max(1,Math.round((t-Date.now())/60000))} min`)}
+function joinQueue(id){const k=kid(id);if(!k)return;if(S.assign[id]){go('kid/'+id);return}
+ const m=mine();if(!m.includes(id)){m.push(id);localStorage.setItem('wkc-mine',JSON.stringify(m))}
+ if(queueIds().includes(id)){toast(lineMsg(id));return}
+ mutate(st=>{st.queue=st.queue||[];if(!st.queue.some(q=>q.id===id)&&!st.assign[id])st.queue.push({id,t:Date.now(),who:me()})},`🙋 ${k.name} joined the draw line`);
+ setTimeout(()=>{toast('🙋 '+lineMsg(id));updateSplash(true)},1600)}
+function queueList(){const q=queueIds(),m=mine();if(!q.length)return`<div class="qempty">Nobody in line yet. Be first! 🙋</div>`;
+ return`<ol class="qlist">${q.map((id,i)=>{const k=kid(id);return`<li class="${m.includes(id)?'me':''}"><span class="qn">${i+1}</span>${av(k)}<b>${esc(k.name)}</b>${m.includes(id)?'<em>you</em>':''}${!isLocked()&&i===0?'<em class="nx">up next</em>':''}</li>`}).join('')}</ol>`}
+function drawCard(){const n=S.kids.length,left=Draw.undrawn(S);const done=n-left.length;const q=queueIds();
  if(!left.length)return`<div class="card drawcard"><h2>🎉 Everyone has drawn!</h2><p class="muted" style="margin:0">All ${n} kids know who they're giving to. Tap a kid to see.</p></div>`;
- return`<div class="card drawcard"><h2>🎡 Draw time!</h2><p class="muted" style="margin:-4px 0 10px">${done} of ${n} drawn. Who's drawing? Tap your kid and spin the wheel!</p>
- <div class="chips">${S.kids.map(k=>{const d=!left.includes(k.id);return`<button class="chip ${d?'done':''}" onclick="go('${d?'kid':'draw'}/${esc(k.id)}')">${av(k)}<div class="nm">${esc(k.name)}</div><div class="ag">${d?'✅ drawn':'🎡 tap to draw'}</div></button>`}).join('')}</div></div>`}
+ const o=openAt(),locked=isLocked();
+ return`<div class="card drawcard"><h2>${locked?'⏳ The big draw':'🔴 Live draw'}</h2>
+ <p class="muted" style="margin:-4px 0 10px">${locked?`Starts at <b>${fmtTime(o)}</b>. Tap your kid to join the line, the wheel spins for everyone in order!`:`${done} of ${n} drawn. Tap your kid to join the line, the wheel spins live in order.`}</p>
+ ${locked?`<button class="btn small" style="margin-bottom:10px" onclick="sessionStorage.removeItem('wkc-peek');updateSplash(true)">⏰ Show countdown</button>`:''}
+ <div class="qbox"><div class="qh">🙋 In line (${q.length})</div>${queueList()}</div>
+ <div class="chips" style="margin-top:12px">${S.kids.map(k=>{const d=!left.includes(k.id);const qi=q.indexOf(k.id);return`<button class="chip ${d?'done':''} ${qi>-1?'inq':''}" onclick="${d?`go('kid/${esc(k.id)}')`:`joinQueue('${esc(k.id)}')`}">${av(k)}<div class="nm">${esc(k.name)}</div><div class="ag">${d?'✅ drawn':qi>-1?`🙋 #${qi+1} in line`:'tap to join line'}</div></button>`}).join('')}</div></div>`}
 const WCOL=['#2f6fde','#e5383b','#1f9d55','#ffc93c','#8fc3ff','#c0392b','#e9eef7','#0f6e3b'];
 function wheelSVG(names){const n=names.length,R=150,c=160;let s=`<svg viewBox="0 0 320 320" id="wheel"><g id="wrot" style="transform-origin:160px 160px">`;
  if(n===1){s+=`<circle cx="${c}" cy="${c}" r="${R}" fill="${WCOL[0]}"/><text x="${c}" y="${c-60}" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="22" fill="#fff">${esc(names[0])}</text>`}
@@ -286,36 +330,54 @@ function wheelSVG(names){const n=names.length,R=150,c=160;let s=`<svg viewBox="0
 function viewDraw(id){const k=kid(id);if(!k)return`<div class="back"><button onclick="go('')">← Home</button></div><div class="card">Kid not found.</div>`;
  const r=kid(S.assign[k.id]);
  if(r)return`<div class="back"><button onclick="go('')">← Home</button></div>${revealHTML(k,r,false)}`;
- const el=Draw.eligible(S,k.id).map(kid).filter(Boolean);
+ const inq=queueIds().includes(k.id);
  return`<div class="back"><button onclick="go('')">← Home</button></div>
- <div class="drawhead">${av(k,'lg')}<h1>${esc(k.name)}'s draw</h1><p>${/mo/i.test(k.age||'')?'Mom & Dad spin for '+esc(k.name)+' 💙':'Ready? Tap SPIN and see who '+esc(k.name)+' gives to!'}</p></div>
- <div class="status-line" id="sline">🕎 ${el.length} names on the wheel 🎄</div>
- <div class="wheelbox"><div class="pointer">🔻</div>${wheelSVG(el.map(x=>x.name))}<div class="hub">🕎</div></div>
- <div style="margin:20px 0"><button class="btn red bigbtn" id="spinbtn" onclick="spin('${esc(k.id)}')">🎡 SPIN!</button></div>
- <p class="muted" style="color:#9fb3e6;text-align:center">Siblings aren't on the wheel. The result saves for everyone right away.</p>`}
+ <div class="drawhead">${av(k,'lg')}<h1>${esc(k.name)}'s draw</h1><p>${/mo/i.test(k.age||'')?'Mom & Dad draw for '+esc(k.name)+' 💙':'The wheel spins live for the whole family!'}</p></div>
+ <div class="card" style="text-align:center">${inq?`<div style="font-size:40px">🙋</div><h2 style="justify-content:center">${esc(lineMsg(k.id))}</h2><p class="muted">Keep this page open to watch the wheel.</p>`:`<button class="btn red bigbtn" onclick="joinQueue('${esc(k.id)}')">🙋 Join the line</button><p class="muted">${isLocked()?'Spins start at '+fmtTime(openAt())+'.':'Spins go in order, one at a time.'}</p>`}
+ <div class="qbox" style="text-align:left;margin-top:12px"><div class="qh">🙋 In line</div>${queueList()}</div></div>`}
 function revealHTML(k,r,fresh){return`<div class="card reveal"><div style="font-size:15px;color:var(--muted);font-weight:600">${fresh?'🥁 And the name is…':esc(k.name)+' already drew'}</div>${av(r,'lg')}<h2>${esc(r.name)}!</h2><p style="margin:0 0 6px;font-size:17px"><b>${esc(k.name)}</b> is giving a gift to <b>${esc(r.name)}</b> (${esc(ageTxt(r))}) 🎁</p>
  <p class="muted">Gifts get mailed, ~$20. Check out ideas for ${esc(r.name)}!</p>
  <div class="row" style="justify-content:center;margin-top:10px"><button class="btn green" onclick="go('kid/${esc(r.id)}')">💡 Gift ideas for ${esc(r.name)}</button><button class="btn ghost" onclick="go('')">🕎 Home</button></div></div>`}
 let AC=null;function beep(f,d,t='square',v=.05){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=t;o.frequency.value=f;g.gain.value=v;g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
-async function spin(gid){if(SPIN)return;const btn=$('#spinbtn');btn.disabled=true;btn.textContent='🥁 Spinning…';
- const names=Draw.eligible(S,gid).map(id=>kid(id).name);let chosen=null,err=null;
- // pick on the freshest data and save immediately
- try{let cur=await fetchRemote()||S;if(cur.assign[gid]){S=cur;SPIN=false;render();toast('Already drawn!');return}
-  chosen=Draw.pick(cur,gid);if(!chosen)throw new Error('stuck');
-  const nm=cur.kids.find(x=>x.id===gid).name,rn=cur.kids.find(x=>x.id===chosen).name;
-  cur.assign[gid]=chosen;const kk=cur.kids.find(x=>x.id===gid);kk.sent=false;kk.received=false;
-  cur.log=cur.log||[];cur.log.unshift({t:new Date().toISOString(),who:me()||'Someone',msg:`🎡 ${nm} drew ${rn}!`});cur.log=cur.log.slice(0,120);cur.rev=(cur.rev||0)+1;cur.updatedAt=new Date().toISOString();
-  await pushRemote(cur);S=cur;lastSync=new Date()}catch(e){err=e}
- if(err){btn.disabled=false;btn.textContent='🎡 SPIN!';toast(err.message==='stuck'?'No valid name left, ask the organizer':'Could not save, check connection');return}
- SPIN=true;const rn=kid(chosen).name;let idx=names.indexOf(rn);if(idx<0){idx=0}
- const n=names.length,seg=360/n;const jitter=(Math.random()-.5)*seg*.6;const target=360*7+(360-(idx+.5)*seg)+jitter;
- const g=$('#wrot'),sl=$('#sline');const T=6500,t0=performance.now();let lastSeg=-1;const msgs=['🥁 Spinning…','✨ Who will it be?','🕎 Slowing down…','🎄 Almost…','🤫 …'];
- await new Promise(res=>{function f(now){const p=Math.min(1,(now-t0)/T);const e=1-Math.pow(1-p,4);const ang=target*e;g.style.transform=`rotate(${ang}deg)`;
-  const sIdx=Math.floor(((ang%360)+360)%360/seg);if(sIdx!==lastSeg){lastSeg=sIdx;beep(900+Math.random()*200,.04,'square',.03)}
-  sl.textContent=msgs[Math.min(msgs.length-1,Math.floor(p*msgs.length))];if(p<1)requestAnimationFrame(f);else res()}requestAnimationFrame(f)});
+// ---------- live show ----------
+let seenShow=null,showQ=[],showing=false,running=false;
+function checkShow(){const ls=S&&S.lastShow;if(!ls||ls.at===seenShow)return;seenShow=ls.at;if(Date.now()-ls.at<30000&&kid(ls.g)&&kid(ls.r)){showQ.push(ls);if(!showing)nextShow()}}
+async function nextShow(){const ls=showQ.shift();if(!ls){showing=false;return}showing=true;const el=$('#show');const k=kid(ls.g),r=kid(ls.r);if(!k||!r){return nextShow()}
+ const names=(ls.names&&ls.names.length?ls.names:[r.name]);let idx=names.indexOf(r.name);if(idx<0)idx=0;
+ el.innerHTML=`<div class="showin"><div class="live">🔴 LIVE DRAW</div><div class="drawhead">${av(k,'lg')}<h1>${esc(k.name)}'s turn!</h1></div>
+ <div class="status-line" id="sline2">🥁 Spinning…</div><div class="wheelbox"><div class="pointer">🔻</div>${wheelSVG(names).replace('id="wheel"','id="wheel2"').replace('id="wrot"','id="wrot2"')}<div class="hub">🕎</div></div><div id="sres"></div></div>`;
+ el.hidden=false;el.classList.add('on');
+ const n=names.length,seg=360/n;const target=360*7+(360-(idx+.5)*seg)+(Math.random()-.5)*seg*.6;const g=$('#wrot2'),sl=$('#sline2');const T=6500,t0=performance.now();let last=-1;const msgs=['🥁 Spinning…','✨ Who will it be?','🕎 Slowing down…','🎄 Almost…','🤫 …'];
+ await new Promise(res=>{function f(now){const p=Math.min(1,(now-t0)/T);const e=1-Math.pow(1-p,4);const ang=target*e;g.style.transform=`rotate(${ang}deg)`;const s=Math.floor(((ang%360)+360)%360/seg);if(s!==last){last=s;beep(900+Math.random()*200,.04,'square',.03)}sl.textContent=msgs[Math.min(msgs.length-1,Math.floor(p*msgs.length))];if(p<1)requestAnimationFrame(f);else res()}requestAnimationFrame(f)});
  beep(523,.15,'triangle',.08);setTimeout(()=>beep(659,.15,'triangle',.08),150);setTimeout(()=>beep(784,.35,'triangle',.08),300);
- sl.textContent=`🎉 ${rn}! 🎉`;confetti();await new Promise(r=>setTimeout(r,1300));SPIN=false;
- const k=kid(gid),r=kid(chosen);$('#app').innerHTML=`<div class="back"><button onclick="go('')">← Home</button></div>${revealHTML(k,r,true)}`;nav();window.scrollTo(0,0)}
+ sl.textContent=`🎉 ${r.name}! 🎉`;confetti();const nxt=queueIds()[0];
+ $('#sres').innerHTML=`<div class="card reveal" style="margin-top:14px"><p style="margin:0;font-size:18px"><b>${esc(k.name)}</b> is giving to <b>${esc(r.name)}</b> (${esc(ageTxt(r))}) 🎁</p>${nxt&&kid(nxt)?`<p class="muted" style="margin:6px 0 0">Up next: <b>${esc(kid(nxt).name)}</b></p>`:''}<div class="row" style="justify-content:center;margin-top:10px"><button class="btn green small" onclick="closeShow();go('kid/${esc(r.id)}')">💡 Ideas for ${esc(r.name)}</button><button class="btn ghost small" onclick="closeShow()">Close</button></div></div>`;
+ await new Promise(r=>setTimeout(r,5000));closeShow()}
+function closeShow(){const el=$('#show');el.classList.remove('on');el.hidden=true;el.innerHTML='';showing=false;render();if(showQ.length)nextShow()}
+async function maybeRun(){if(running||busy||readOnly||!S||isLocked()||!openAt())return;const q=queueIds();if(!q.length)return;if(Date.now()-((S.lastShow&&S.lastShow.at)||0)<SLOT)return;
+ running=true;try{await new Promise(r=>setTimeout(r,Math.random()*1500));let cur=await fetchRemote();if(!cur)return;
+  const q2=queueIds(cur);if(!q2.length||Date.now()-((cur.lastShow&&cur.lastShow.at)||0)<SLOT){S=cur;return}
+  const gid=q2[0];const names=Draw.eligible(cur,gid).map(id=>cur.kids.find(k=>k.id===id).name);const r=Draw.pick(cur,gid);const nm=cur.kids.find(k=>k.id===gid).name;
+  cur.queue=(cur.queue||[]).filter(x=>x.id!==gid);cur.log=cur.log||[];
+  if(!r){cur.log.unshift({t:new Date().toISOString(),who:'Live draw',msg:`⚠️ ${nm} couldn't be drawn (no valid name left). The organizer will fix it.`})}
+  else{cur.assign[gid]=r;const kk=cur.kids.find(k=>k.id===gid);kk.sent=false;kk.received=false;cur.lastShow={g:gid,r,at:Date.now(),names};cur.log.unshift({t:new Date().toISOString(),who:'Live draw',msg:`🎡 ${nm} drew ${cur.kids.find(k=>k.id===r).name}!`})}
+  cur.log=cur.log.slice(0,150);cur.rev=(cur.rev||0)+1;cur.updatedAt=new Date().toISOString();await pushRemote(cur);
+  await new Promise(r=>setTimeout(r,1200));const fin=await fetchRemote();if(fin){S=fin;lastSync=new Date();if(!showing)render();checkShow()}}catch(e){console.warn(e)}finally{running=false}}
+// ---------- countdown splash ----------
+let splashBoom=false;
+function cdParts(ms){const s=Math.max(0,Math.ceil(ms/1000));const d=Math.floor(s/86400),hh=Math.floor(s%86400/3600),mm=Math.floor(s%3600/60),ss=s%60;const p=x=>String(x).padStart(2,'0');return d?`${d}d ${p(hh)}:${p(mm)}:${p(ss)}`:hh?`${hh}:${p(mm)}:${p(ss)}`:`${mm}:${p(ss)}`}
+function updateSplash(force){const el=$('#splash');if(!S)return;const locked=isLocked();
+ if(!locked||sessionStorage.getItem('wkc-peek')){if(!el.hidden&&!splashBoom){if(!locked&&openAt()){boom()}else{el.hidden=true}}return}
+ if(el.hidden||force||!$('#cd')){const left=Draw.undrawn(S).filter(id=>!queueIds().includes(id));
+  el.innerHTML=`<div class="sp"><div class="spk">${['❄️','🎁','✨','🕎','⭐','❄️','🎄','✨','🪙','❄️','💙','🍩'].map((e,i)=>`<span style="left:${(i*37)%100}%;animation-delay:${(i*0.7)%5}s;animation-duration:${6+i%4}s">${e}</span>`).join('')}</div>
+  <div class="spin">${menorah}<div class="gr">Get ready…</div><div class="tl">The big Warszawski Kids draw starts in</div><div class="cd" id="cd">${cdParts(openAt()-Date.now())}</div><div class="at">🎡 Tonight at ${fmtTime(openAt())}</div>
+  <div class="spq"><div class="qh">🙋 In line (<span id="sqn">${queueIds().length}</span>)</div><div id="sq">${queueList()}</div></div>
+  ${left.length?`<div class="spj"><div class="qh">Tap your kid to join the line</div><div class="mini">${left.map(id=>{const k=kid(id);return`<button onclick="joinQueue('${esc(id)}')">${esc(k.name)}</button>`}).join('')}</div></div>`:''}
+  <button class="peek" onclick="sessionStorage.setItem('wkc-peek','1');$('#splash').hidden=true">👀 Look around</button></div></div>`;el.hidden=false}
+ else{$('#cd').textContent=cdParts(openAt()-Date.now())}}
+function boom(){const el=$('#splash');splashBoom=true;const cd=$('#cd');if(cd){cd.textContent='GO! 🎉';cd.classList.add('go')}const g=$('#splash .gr');if(g)g.textContent="It's time!";confetti();beep(523,.15,'triangle',.08);setTimeout(()=>beep(659,.15,'triangle',.08),150);setTimeout(()=>beep(784,.4,'triangle',.08),300);
+ setTimeout(()=>{el.classList.add('out');setTimeout(()=>{el.hidden=true;el.classList.remove('out');splashBoom=false;go('')},700)},1800)}
+let tickN=0;setInterval(()=>{tickN++;if(!S)return;updateSplash();const hot=queueIds().length||Math.abs(openAt()-Date.now())<180000||showing;if(hot&&tickN%2===0)poll();maybeRun()},1000);
 function confetti(){const c=$('#confetti'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const E=['🎁','❄️','⭐','🕎','🎄','💙','🍩','🪙'];
  const ps=Array.from({length:110},()=>({x:innerWidth/2,y:innerHeight*.45,vx:(Math.random()-.5)*14,vy:-Math.random()*14-4,r:Math.random()*6.28,vr:(Math.random()-.5)*.3,e:Math.random()<.35?E[Math.floor(Math.random()*E.length)]:null,col:WCOL[Math.floor(Math.random()*WCOL.length)],s:Math.random()*8+6}));
  const t0=performance.now();(function f(now){x.clearRect(0,0,c.width,c.height);for(const p of ps){p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.r);if(p.e){x.font=p.s*2.4+'px serif';x.fillText(p.e,0,0)}else{x.fillStyle=p.col;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2)}x.restore()}
@@ -344,6 +406,9 @@ function viewAdmin(){const n=Object.keys(S.assign).filter(g=>S.assign[g]).length
  <header class="hero" style="padding-top:0"><h1 style="font-size:34px"><span class="c">Settings</span></h1></header>
  ${p.length?warnBox():`<div class="ok">✅ ${n} of ${S.kids.length} kids have drawn. No sibling pairs, nobody gets two.</div>`}
  <div class="card"><h2>📅 Opening day</h2><div class="row" style="flex-wrap:nowrap"><input type="date" id="odate" value="${esc(d||'')}"><button class="btn small" onclick="setOpening()">Save</button>${d?`<button class="btn small ghost" onclick="setOpening(true)">Clear</button>`:''}</div><p class="muted">${d?'Now: '+esc(fmtDate(d)):'Not set (shows “Date TBD”)'}</p></div>
+ <div class="card"><h2>⏰ Draw starts at</h2><div class="row" style="flex-wrap:nowrap"><input type="datetime-local" id="sopen" value="${S.spinsOpenAt?toLocalInput(S.spinsOpenAt):''}"><button class="btn small" onclick="setSpinsOpen()">Save</button>${S.spinsOpenAt?`<button class="btn small ghost" onclick="setSpinsOpen(true)">Clear</button>`:''}</div>
+  <p class="muted">${S.spinsOpenAt?(isLocked()?'Countdown running until ':'Opened at ')+new Date(S.spinsOpenAt).toLocaleString([], {weekday:'short',hour:'numeric',minute:'2-digit'}):'Not set: the line spins right away.'}</p>
+  <div class="qbox"><div class="qh">🙋 In line (${queueIds().length})</div>${queueIds().map((id,i)=>`<div class="excl"><b>${i+1}.</b> ${esc(kid(id).name)}<button class="btn small ghost" style="margin-left:auto" onclick="unqueue('${esc(id)}')">Remove</button></div>`).join('')||'<div class="muted">Empty</div>'}</div></div>
  <div class="card"><h2>🎡 Draws</h2><div style="display:grid;gap:12px">
    <button class="btn red" onclick="resetDraws()">🔄 Reset all draws</button>
    <p class="muted" style="margin:-4px 0 0">Clears every draw and the Sent/Received marks. Kids, ages, sibling rules and gift ideas stay.</p>
@@ -364,12 +429,15 @@ function viewAdmin(){const n=Object.keys(S.assign).filter(g=>S.assign[g]).length
  <div class="card"><h2>👨‍👩‍👧 Sibling groups</h2><p class="muted" style="margin:-4px 0 6px">Kids in the same group never draw each other.</p>
   ${S.exclusions.length?S.exclusions.map((g,i)=>`<div class="excl">${g.map(id=>`<span class="tag">${esc((kid(id)||{name:id}).name)}</span>`).join('')}<button class="btn small ghost" style="margin-left:auto" onclick="delGroup(${i})">Remove</button></div>`).join(''):'<div class="empty">No groups yet</div>'}
   <details class="add"><summary>＋ Add a sibling group</summary><div class="checks">${S.kids.map(k=>`<label><input type="checkbox" value="${esc(k.id)}" class="gchk">${esc(k.name)}</label>`).join('')}</div><button class="btn green small" onclick="addGroup()">Add group</button></details></div>
- <div class="card"><h2>📜 Activity log</h2><p class="muted" style="margin:-4px 0 10px">${(S.log||[]).length} entries.</p><button class="btn small ghost" onclick="clearLog()">🧹 Clear activity log</button></div>`}
+ <div class="card"><h2>📜 Activity log</h2><p class="muted" style="margin:-4px 0 10px">${(S.log||[]).length} entries. Only admins can see this.</p><div class="row"><button class="btn small" onclick="go('log')">📜 View activity</button><button class="btn small ghost" onclick="clearLog()">🧹 Clear activity log</button></div></div>`}
 async function resetDraws(){if(!isAdmin())return go('settings');if(!confirm('Reset ALL draws? Everyone will need to spin again.'))return;
- mutate(st=>{st.assign={};st.kids.forEach(k=>{k.sent=false;k.received=false;k.note=''})},'🔄 Reset all draws (everyone can spin again)');setTimeout(()=>go(''),400)}
+ mutate(st=>{st.assign={};st.queue=[];st.lastShow=null;st.kids.forEach(k=>{k.sent=false;k.received=false;k.note=''})},'🔄 Reset all draws (everyone can spin again)');setTimeout(()=>go(''),400)}
+function toLocalInput(iso){const d=new Date(iso);const p=x=>String(x).padStart(2,'0');return`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`}
+function setSpinsOpen(clear){if(!isAdmin())return go('settings');const v=clear?'':($('#sopen').value||'');if(!clear&&!v){toast('Pick a date and time');return}const iso=v?new Date(v).toISOString():'';mutate(st=>{st.spinsOpenAt=iso},iso?`⏰ Draw starts ${new Date(iso).toLocaleString([], {weekday:'short',hour:'numeric',minute:'2-digit'})}`:'⏰ Cleared the draw start time')}
+function unqueue(id){if(!isAdmin())return;mutate(st=>{st.queue=(st.queue||[]).filter(q=>q.id!==id)},`Removed ${kid(id).name} from the line`)}
 function clearLog(){if(!isAdmin())return;if(!confirm('Clear the whole activity log?'))return;mutate(st=>{st.log=[]},'🧹 Cleared the activity log')}
 function render(){if(!S)return;const {v,id}=route();const app=$('#app');
- if(SPIN)return;app.innerHTML=v==='kid'?viewKid(id):v==='draw'?viewDraw(id):v==='settings'?viewSettings():v==='list'?viewList():v==='log'?viewLog():viewHome();nav();renderSync();
+ app.innerHTML=v==='kid'?viewKid(id):v==='draw'?viewDraw(id):v==='settings'?viewSettings():v==='list'?viewList():v==='log'?(isAdmin()?viewLog():viewPin()):viewHome();nav();renderSync();
  app.querySelectorAll('[data-sent]').forEach(b=>b.onclick=e=>{e.stopPropagation();toggleSent(b.dataset.sent)});app.querySelectorAll('[data-recv]').forEach(b=>b.onclick=e=>{e.stopPropagation();toggleRecv(b.dataset.recv)});
  if(v==='settings'&&isAdmin()){const upd=()=>{const a=$('#sw-a').value,b=$('#sw-b').value;$('#sw-prev').innerHTML=swapPreview(a,b)};$('#sw-a').onchange=upd;$('#sw-b').onchange=upd;upd()}}
 // ---------- actions ----------
@@ -395,7 +463,7 @@ function reassign(id,nr){if(!isAdmin())return go('settings');if(!nr||nr===S.assi
  if(!confirm(msg+'\n\nGo ahead?'))return;
  mutate(st=>{const o=Object.keys(st.assign).find(g=>g!==id&&st.assign[g]===nr);const prev=st.assign[id];st.assign[id]=nr;if(o)st.assign[o]=prev;[id,o].forEach(q=>{const k=st.kids.find(z=>z.id===q);if(k){k.sent=false;k.received=false;k.note=''}})},`${kid(id).name} now buys for ${kid(nr).name}`+(other?` (${kid(other).name} now buys for ${(kid(old)||{name:'nobody'}).name})`:''))}
 async function redraw(){if(!isAdmin())return go('settings');if(!confirm('Re-draw EVERYONE at once? This replaces all draws and resets Sent/Received & notes.'))return;const a=makeDraw();if(!a){toast("Can't find a draw with these rules");return}
- mutate(st=>{st.assign=a;st.kids.forEach(k=>{k.sent=false;k.received=false;k.note=''})},'Re-drew everyone (new random gift circle)')}
+ mutate(st=>{st.assign=a;st.queue=[];st.lastShow=null;st.kids.forEach(k=>{k.sent=false;k.received=false;k.note=''})},'Re-drew everyone (new random gift circle)')}
 function editKid(id){if(!isAdmin())return go('settings');const n=$('#en-'+id).value.trim().slice(0,40),a=$('#ea-'+id).value.trim().slice(0,12);if(!n){toast('Name needed');return}const old=kid(id).name;mutate(st=>{const k=st.kids.find(q=>q.id===id);if(k){k.name=n;k.age=a}},`Edited ${old}${old!==n?' → '+n:''} (age ${a})`)}
 function removeKid(id){if(!isAdmin())return go('settings');const k=kid(id);if(!confirm(`Remove ${k.name} from the exchange? We'll close the gap so the circle still works.`))return;
  mutate(st=>{const g=Object.keys(st.assign).find(x=>st.assign[x]===id);const r=st.assign[id];delete st.assign[id];if(g&&r&&r!==g)st.assign[g]=r;else if(g)delete st.assign[g];st.kids=st.kids.filter(q=>q.id!==id);st.exclusions=st.exclusions.map(gr=>gr.filter(x=>x!==id)).filter(gr=>gr.length>1)},`Removed ${k.name}`);go('')}
