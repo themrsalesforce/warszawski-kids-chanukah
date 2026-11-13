@@ -1,0 +1,719 @@
+{
+ "app": "wkc",
+ "assign": {},
+ "exclusions": [
+  [
+   "abie",
+   "ella",
+   "mika"
+  ],
+  [
+   "ari",
+   "chana",
+   "shalom"
+  ]
+ ],
+ "kids": [
+  {
+   "age": "13",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51eW+ixIRfL.jpg",
+     "price": 23.99,
+     "title": "LEGO Creator 3 in 1 Typewriter with Flowers 31169",
+     "url": "https://www.amazon.com/dp/B0DJ1D4TYS",
+     "why": "Grown-up looking LEGO build (ages 8+, 363 pcs) that doubles as desk/room decor for a teen."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51Hz2-Z6HaL.jpg",
+     "price": 24.69,
+     "title": "EBODA Waterproof Bluetooth Shower Speaker",
+     "url": "https://www.amazon.com/dp/B095HJYYG2",
+     "why": "Popular teen-girl gift: waterproof suction-cup speaker for her room or shower (sold by Tudoc, ships from Amazon)."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41bpL3GefuL.jpg",
+     "price": 19.99,
+     "title": "Craft Crush Friendship Bracelet Making Kit (Ages 13+)",
+     "url": "https://www.amazon.com/dp/B095Z132FN",
+     "why": "Rated 13+, a trendy bracelet-making kit perfect for sleepovers and making sets for friends."
+    }
+   ],
+   "id": "mollie",
+   "name": "Mollie",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "10",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51BMH1R7VSL.jpg",
+     "price": 24.99,
+     "title": "National Geographic Mammoth Dissection Kit and Anatomy Lab",
+     "url": "https://www.amazon.com/dp/B0H2C6BW95",
+     "why": "Hands-on Ice Age science: dig out and assemble a glow-in-the-dark mammoth skeleton."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41IQWwuUVnL.jpg",
+     "price": 16.79,
+     "title": "LEGO Creator 3 in 1 Retro Telephone 31174",
+     "url": "https://www.amazon.com/dp/B0DRW7P7DS",
+     "why": "Ages 8+ LEGO with 3 builds; 44% off right now (4.9\u2605)."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51XBV3FW8gL.jpg",
+     "price": 19.97,
+     "title": "Rubik's Rush Light-Up Handheld Brain Teaser",
+     "url": "https://www.amazon.com/dp/B0G8JGSPC4",
+     "why": "Screen-free electronic puzzle game with fast-paced light-up challenges."
+    }
+   ],
+   "id": "rocky",
+   "name": "Rocky",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "5",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51AuI3D+c7L.jpg",
+     "price": 24.99,
+     "title": "HABA Monza Car Racing Board Game",
+     "url": "https://www.amazon.com/dp/B0FN47LKSK",
+     "why": "Award-winning color-dice racing game for ages 5+; simple strategy for preschoolers."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41SWdqA8xoL.jpg",
+     "price": 18.99,
+     "title": "Hot Wheels Snake Spiral Attack Track Set with Car",
+     "url": "https://www.amazon.com/dp/B0DL6DK1PX",
+     "why": "Compact stunt track with a 1:64 car; big excitement for a 5-year-old."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41eou+srT3L.jpg",
+     "price": 17.44,
+     "title": "Melissa & Doug Build-A-House Wooden Toolbox",
+     "url": "https://www.amazon.com/dp/B0G4XLT29N",
+     "why": "Wooden pretend-play tool and building set; sturdy, no batteries."
+    }
+   ],
+   "id": "isaac",
+   "name": "Isaac",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "11",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51Y8XF1oUyL.jpg",
+     "price": 24.99,
+     "title": "Hasbro Gaming Retro Series Clue 1986 Edition",
+     "url": "https://www.amazon.com/dp/B013TO5PDU",
+     "why": "Classic deduction board game in retro packaging; great for family game nights (4.8\u2605, 8.8K ratings)."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51Q-V0i+94L.jpg",
+     "price": 19.99,
+     "title": "Rubik's Cube 5x5 The Professor",
+     "url": "https://www.amazon.com/dp/B092W9G6B7",
+     "why": "A real step-up challenge for an 11-year-old who has mastered the 3x3."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41OT8PffJsL.jpg",
+     "price": 20,
+     "title": "Unstable Games Here to Slay Base Card Game",
+     "url": "https://www.amazon.com/dp/B085JYYWJV",
+     "why": "Hit fantasy-adventure strategy card game for tweens and teens, 2-6 players (4.8\u2605, 6.2K ratings)."
+    }
+   ],
+   "id": "ari",
+   "name": "Ari",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "8",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/61nvS-pWlqL.jpg",
+     "price": 19.99,
+     "title": "Hasbro Gaming The Game of Life Board Game",
+     "url": "https://www.amazon.com/dp/B00NQQTXW6",
+     "why": "Ages 8+ family classic; easy for an 8-year-old to play with siblings."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51DD8p8-HRL.jpg",
+     "price": 19.95,
+     "title": "ThinkFun Rush Hour Traffic Jam Logic Game",
+     "url": "https://www.amazon.com/dp/B00000DMER",
+     "why": "Award-winning single-player logic puzzle (ages 8+), 40 challenges; screen-free."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41xWEt+2o2L.jpg",
+     "price": 14.99,
+     "title": "Rubik's Cube 3x3 Magnetic Speed Cube",
+     "url": "https://www.amazon.com/dp/B0CSYGLWN5",
+     "why": "Smooth magnetic speed cube, ideal first 'real' cube for an 8-year-old."
+    }
+   ],
+   "id": "shalom",
+   "name": "Shalom",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "5",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51tas1e0YBL.jpg",
+     "price": 19.99,
+     "title": "Peaceable Kingdom Mermaid Island Cooperative Game",
+     "url": "https://www.amazon.com/dp/B004HVKABC",
+     "why": "Award-winning cooperative board game for ages 5+; no one gets left out."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51kKHHTY7mL.jpg",
+     "price": 19.99,
+     "title": "Crayola Swirl & Pastel Art Case (140 pcs)",
+     "url": "https://www.amazon.com/dp/B0GM1JT9MF",
+     "why": "Big Crayola art case with crayons, markers and pencils in a carry case (4.8\u2605, 31K ratings); plain art design, not holiday-themed."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41O-JsWhkJL.jpg",
+     "price": 15.99,
+     "title": "Melissa & Doug Cheery Lane Wooden Vehicle & Figures Set",
+     "url": "https://www.amazon.com/dp/B0G4XNVQCB",
+     "why": "Wooden vehicle-and-figures pretend-play set for imaginative storytelling."
+    }
+   ],
+   "id": "chana",
+   "name": "Chana",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "10",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51doWvQ1pvL.jpg",
+     "price": 23.99,
+     "title": "LEGO Friends Creative Flower Shop 42693",
+     "url": "https://www.amazon.com/dp/B0G2T5KS7B",
+     "why": "Ages 7+ LEGO Friends set with 2 minidolls; a different flower theme than the Wildflower Bouquet I suggested earlier."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51hTE+KAt9L.jpg",
+     "price": 19.99,
+     "title": "Make It Real Juicy Couture Glitz 'N Glam Charm Bracelets Kit",
+     "url": "https://www.amazon.com/dp/B0DSLRRXTK",
+     "why": "494-piece kit to design 18 charm bracelets; a hit with 8-12 year old girls."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51VZe-rci-L.jpg",
+     "price": 24.9,
+     "title": "Klutz Mini Clay World Kitty Condo",
+     "url": "https://www.amazon.com/dp/B0GLKC19LG",
+     "why": "Klutz clay-sculpting kit (cousin of the Clay Charms idea) to build a tiny kitty apartment."
+    }
+   ],
+   "id": "ella",
+   "name": "Ella",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "7",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/511wPObYp-L.jpg",
+     "price": 24.99,
+     "title": "Peaceable Kingdom Ghost in the Attic Cooperative Game",
+     "url": "https://www.amazon.com/dp/B0B8DWPDRC",
+     "why": "Glow-in-the-dark cooperative game (ages 5+) where everyone wins or loses together."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/61vac6K5OPL.jpg",
+     "price": 19.79,
+     "title": "STEM 2-in-1 Truck/Airplane Take-Apart Building Kit (361 pcs)",
+     "url": "https://www.amazon.com/dp/B093CJQXXH",
+     "why": "Kid-safe screwdriver building kit (ages 5-12) for a hands-on 7-year-old."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/415WvZjW6vL.jpg",
+     "price": 19.82,
+     "title": "Exploding Kittens Rage Mode Card Game (Ages 7+)",
+     "url": "https://www.amazon.com/dp/B09R3QNLR9",
+     "why": "Silly, fast card game rated 7+ that siblings and cousins can play together."
+    },
+    {
+     "addedBy": "From family",
+     "image": "",
+     "price": "",
+     "title": "lego",
+     "url": "",
+     "why": ""
+    }
+   ],
+   "id": "abie",
+   "name": "Abie",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "4",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51TbkKa-mpL.jpg",
+     "price": 16.69,
+     "title": "Peaceable Kingdom Dinosaur Escape Cooperative Game",
+     "url": "https://www.amazon.com/dp/B00S288BKI",
+     "why": "Cooperative memory game made for ages 4+; dinosaurs plus teamwork."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/511MWHDA80L.jpg",
+     "price": 19.5,
+     "title": "MAGNA-TILES Combo 20-Piece Magnetic Building Set",
+     "url": "https://www.amazon.com/dp/B0CX4GPHWW",
+     "why": "The original magnetic tiles, a starter set for open-ended building."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/419ga+dca9L.jpg",
+     "price": 24.99,
+     "title": "Hot Wheels ZipBin Car Storage Box & Playmat with Ramp",
+     "url": "https://www.amazon.com/dp/B0CYM7RCHL",
+     "why": "Ages 3+ car case that unzips into a 21-inch race mat with a ramp."
+    },
+    {
+     "addedBy": "From family",
+     "image": "",
+     "price": "",
+     "title": "cars",
+     "url": "",
+     "why": ""
+    },
+    {
+     "addedBy": "From family",
+     "image": "",
+     "price": "",
+     "title": "coloring",
+     "url": "",
+     "why": ""
+    },
+    {
+     "addedBy": "From family",
+     "image": "",
+     "price": "",
+     "title": "lego",
+     "url": "",
+     "why": ""
+    }
+   ],
+   "id": "mika",
+   "name": "Mika",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "4",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41HiZtzn55L.jpg",
+     "price": 23.97,
+     "title": "Melissa & Doug Super Smile Dentist Play Set",
+     "url": "https://www.amazon.com/dp/B08CLH6Q5J",
+     "why": "25-piece pretend dentist kit with oversized teeth; top-rated (4.8\u2605, 11.9K ratings)."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51K1E8CR1hL.jpg",
+     "price": 22.95,
+     "title": "CreateOn Crayola Doodle Magnetic Tiles",
+     "url": "https://www.amazon.com/dp/B0D98T84VN",
+     "why": "Magnetic tiles you can draw on, so she can build and color."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/416k-G34kVL.jpg",
+     "price": 16.22,
+     "title": "Melissa & Doug Star Diner Restaurant Pretend Play Set",
+     "url": "https://www.amazon.com/dp/B072PY2WZG",
+     "why": "41-piece play-restaurant set (ages 3+) with menu, apron and pretend food (no real food)."
+    }
+   ],
+   "id": "noa",
+   "name": "Noa",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "1",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41tXnPghrTL.jpg",
+     "price": 21.99,
+     "title": "Kidoozie Squeak 'n Stack Blocks",
+     "url": "https://www.amazon.com/dp/B00RGLQU00",
+     "why": "Soft squeaky stacking blocks for babies and young toddlers."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/31Y1RVdMuTL.jpg",
+     "price": 19.96,
+     "title": "Skip Hop Farmstand Rock-A-Mole Guitar",
+     "url": "https://www.amazon.com/dp/B07R3P6HZX",
+     "why": "Musical baby guitar with lights and songs; Skip Hop rates it 6 months+."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51Tn+SqGngL.jpg",
+     "price": 17.97,
+     "title": "VTech Bright Lights Soft Soccer Ball",
+     "url": "https://www.amazon.com/dp/B0765ZPXMC",
+     "why": "Soft light-up ball that sings when rolled; rated 6-36 months."
+    }
+   ],
+   "id": "nesya",
+   "name": "Nesya",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "1",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/31BtgoV98UL.jpg",
+     "price": 19.7,
+     "title": "Hape Maple Wood Building Blocks (50 pcs)",
+     "url": "https://www.amazon.com/dp/B00712NYP8",
+     "why": "Heirloom-quality wooden blocks; Hape rates them 12 months+."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51b9mnE5ktL.jpg",
+     "price": 14.97,
+     "title": "MEGA BLOKS First Builders Big Building Bag (80 pcs)",
+     "url": "https://www.amazon.com/dp/B007GE75HY",
+     "why": "Big toddler-size blocks for ages 1-5; the #1 first building toy (4.8\u2605, 132K ratings)."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51o2ffdLWIL.jpg",
+     "price": 19.97,
+     "title": "VTech Turn and Learn Driver",
+     "url": "https://www.amazon.com/dp/B00Y53V80E",
+     "why": "Pretend steering wheel with 60+ songs and phrases; rated 6-36 months."
+    }
+   ],
+   "id": "shaina",
+   "name": "Shaina",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "2",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/415eJ7m5LkL.jpg",
+     "price": 20.99,
+     "title": "Potato Head Create Your Family Set (44 pieces)",
+     "url": "https://www.amazon.com/dp/B0CP41C4QN",
+     "why": "Classic mix-and-match play made for toddlers and preschoolers."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51bF8DI9J1L.jpg",
+     "price": 19.59,
+     "title": "Fisher-Price Wood Animal Puzzle (12 blocks)",
+     "url": "https://www.amazon.com/dp/B0DLH93L1J",
+     "why": "Chunky wooden animal blocks, rated by Fisher-Price for 24 months+."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41tkMfCJDPL.jpg",
+     "price": 23.74,
+     "title": "Kikidex Magnetic Drawing Board",
+     "url": "https://www.amazon.com/dp/B0BGN1YDJH",
+     "why": "Mess-free doodling with sealed magnetic beads; listed for ages 1-3."
+    }
+   ],
+   "id": "bailey",
+   "name": "Bailey",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "5",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51ymHwuAqbL.jpg",
+     "price": 22.99,
+     "title": "ThinkFun Barnyard Zingo! Preschool Bingo Game",
+     "url": "https://www.amazon.com/dp/B0GHTN9RPV",
+     "why": "Award-winning Zingo with a farm theme; builds matching and early reading skills."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51IyC7dJyGL.jpg",
+     "price": 23.98,
+     "title": "Hot Wheels 20-Car Gift Pack",
+     "url": "https://www.amazon.com/dp/B01BMW645O",
+     "why": "20 die-cast cars in one box; huge value and a perennial favorite (4.8\u2605, 100K+ ratings)."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51L+D4HCjuL.jpg",
+     "price": 15.99,
+     "title": "Play-Doh Dumpin' Fun Garbage Truck Playset",
+     "url": "https://www.amazon.com/dp/B0BC6WHGFY",
+     "why": "Truck-themed Play-Doh set (ages 3+) for creative play."
+    }
+   ],
+   "id": "yisroel",
+   "name": "Yisroel",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "1",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51o5+--kh3L.jpg",
+     "price": 19.9,
+     "title": "VTech Drop and Go Dump Truck",
+     "url": "https://www.amazon.com/dp/B01LWBZFD2",
+     "why": "Push-and-pull truck that counts the rocks toddlers drop in; rated 6-36 months."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/511fwbwvuPL.jpg",
+     "price": 18.89,
+     "title": "Fisher-Price Little People Forest Friends Carry Case",
+     "url": "https://www.amazon.com/dp/B0CPMP45SH",
+     "why": "Tree playset with 8 chunky animal figures that packs up to take along."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51QLG6Nv1WL.jpg",
+     "price": 23.99,
+     "title": "LeapFrog My Pal Scout",
+     "url": "https://www.amazon.com/dp/B001W30D2O",
+     "why": "Interactive plush puppy that sings and teaches; rated 6 months+."
+    }
+   ],
+   "id": "menachem",
+   "name": "Menachem",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "3",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/4179iXGSM9L.jpg",
+     "price": 21.99,
+     "title": "Melissa & Doug Band-in-a-Box Clap! Clang! Tap!",
+     "url": "https://www.amazon.com/dp/B00005RF5C",
+     "why": "10 real kid-size instruments in a wooden crate; rated ages 3+."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/412Qv7C1ADL.jpg",
+     "price": 15.49,
+     "title": "Melissa & Doug Take-Along Wooden Toy Barn",
+     "url": "https://www.amazon.com/dp/B07YR9T251",
+     "why": "Portable wooden barn with farm animals; 57% off right now."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51F+AV8iPYL.jpg",
+     "price": 16.96,
+     "title": "Play-Doh Fun Tub Set with 19 Accessories",
+     "url": "https://www.amazon.com/dp/B00TPMDLOG",
+     "why": "Ages 3+ Play-Doh starter tub with tools and storage (4.8\u2605, 13.7K ratings)."
+    }
+   ],
+   "id": "sara",
+   "name": "Sara",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  },
+  {
+   "age": "4 mo",
+   "giftIdeas": [
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/51kDv0QeVIL.jpg",
+     "price": 19.99,
+     "title": "Musical Stuffed Caterpillar Tummy Time Toy (0-6 months)",
+     "url": "https://www.amazon.com/dp/B0CDWW374H",
+     "why": "Soft crinkle/rattle caterpillar with mirror, made for newborns to 6 months."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41PjEDPz0tL.jpg",
+     "price": 14.99,
+     "title": "Lamaze Freddie the Firefly Clip-On Toy",
+     "url": "https://www.amazon.com/dp/B000I2Q0F4",
+     "why": "Iconic high-contrast infant toy with crinkles and teether; rated 0 months+ (4.8\u2605, 22K ratings)."
+    },
+    {
+     "addedBy": "Product Hunter",
+     "image": "https://m.media-amazon.com/images/I/41nDJRfDdAL.jpg",
+     "price": 14.99,
+     "title": "Sassy Tummy Time Floor Mirror",
+     "url": "https://www.amazon.com/dp/B002J4U8M0",
+     "why": "Soft-frame baby-safe mirror for tummy time; rated 0+ months."
+    }
+   ],
+   "id": "bella",
+   "name": "Bella",
+   "note": "",
+   "received": false,
+   "sent": false,
+   "wishlist": ""
+  }
+ ],
+ "log": [
+  {
+   "msg": "\ud83d\ude4b Shalom joined the draw line",
+   "t": "2026-11-13T00:53:27.301Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "\u23f0 The big draw starts tonight at 8:00 PM. Join the line!",
+   "t": "2026-11-13T00:47:22.306294+00:00",
+   "who": "Grok Bot"
+  },
+  {
+   "msg": "\ud83d\udd04 Reset all draws (everyone can spin again)",
+   "t": "2026-11-13T00:30:48.564Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "Simplified kid pages: wish lists moved into Suggested gifts (marked From family)",
+   "t": "2026-11-13T00:28:18.114272+00:00",
+   "who": "Grok Bot"
+  },
+  {
+   "msg": "\ud83c\udfa1 Abie drew Bella!",
+   "t": "2026-11-13T00:25:39.267Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "\ud83c\udfa1 Ella drew Isaac!",
+   "t": "2026-11-13T00:24:06.442Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "\ud83c\udfa1 New: spin-the-wheel draw! Everyone starts undrawn, tap your kid to spin",
+   "t": "2026-11-13T00:20:09.065949+00:00",
+   "who": "Grok Bot"
+  },
+  {
+   "msg": "Added 3 gift ideas (~$20, Amazon) for every kid",
+   "t": "2026-11-13T00:16:18.495169+00:00",
+   "who": "Product Hunter"
+  },
+  {
+   "msg": "Switched to simple \u2705 Sent / \ud83d\udce6 Received tracking for mailed gifts, and added an opening day",
+   "t": "2026-11-13T00:16:18.495169+00:00",
+   "who": "Grok Bot"
+  },
+  {
+   "msg": "Updated Mika's wish list",
+   "t": "2026-11-13T00:14:48.500Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "Updated Abie's wish list",
+   "t": "2026-11-13T00:14:04.946Z",
+   "who": "Someone"
+  },
+  {
+   "msg": "Started the exchange with a random draw for 17 kids (one big circle)",
+   "t": "2026-11-13T00:03:54.937301+00:00",
+   "who": "Grok Bot"
+  }
+ ],
+ "openingDate": "",
+ "queue": [
+  {
+   "id": "shalom",
+   "t": 1794531207301,
+   "who": ""
+  }
+ ],
+ "rev": 33,
+ "schema": 2,
+ "spinsOpenAt": "2026-11-13T01:00:00.000Z",
+ "updatedAt": "2026-11-13T00:53:27.302Z"
+}
