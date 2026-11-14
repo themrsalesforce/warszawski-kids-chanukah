@@ -8,6 +8,7 @@
   "chana": "ella",
   "ella": "menachem",
   "isaac": "mika",
+  "mika": "ari",
   "mollie": "yisroel",
   "nesya": "chana",
   "noa": "mollie",
@@ -729,18 +730,27 @@
   }
  ],
  "lastShow": {
-  "at": 1794575049583,
-  "g": "noa",
+  "at": 1794698762240,
+  "g": "mika",
   "names": [
-   "Mollie",
    "Ari",
    "Shalom",
    "Shaina",
    "Bella"
   ],
-  "r": "mollie"
+  "r": "ari"
  },
  "log": [
+  {
+   "msg": "\ud83c\udfa1 Mika drew Ari!",
+   "t": "2026-11-14T23:26:02.240Z",
+   "who": "Live draw"
+  },
+  {
+   "msg": "\ud83d\ude4b Mika joined the draw line",
+   "t": "2026-11-14T23:26:01.121Z",
+   "who": "Ari"
+  },
   {
    "msg": "\ud83c\udfa1 Noa drew Mollie!",
    "t": "2026-11-13T13:04:09.583Z",
@@ -989,8 +999,8 @@
  ],
  "openingDate": "",
  "queue": [],
- "rev": 70,
+ "rev": 72,
  "schema": 2,
  "spinsOpenAt": "2026-11-13T01:00:00.000Z",
- "updatedAt": "2026-11-13T13:04:09.583Z"
+ "updatedAt": "2026-11-14T23:26:02.240Z"
 }
