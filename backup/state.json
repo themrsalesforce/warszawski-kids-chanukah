@@ -8,13 +8,16 @@
   "chana": "ella",
   "ella": "menachem",
   "isaac": "mika",
+  "menachem": "shalom",
   "mika": "ari",
   "mollie": "yisroel",
   "nesya": "chana",
   "noa": "mollie",
   "rocky": "nesya",
+  "sara": "bella",
   "shaina": "noa",
-  "shalom": "rocky"
+  "shalom": "rocky",
+  "yisroel": "shaina"
  },
  "exclusions": [
   [
@@ -730,17 +733,44 @@
   }
  ],
  "lastShow": {
-  "at": 1794698762240,
-  "g": "mika",
+  "at": 1794713556150,
+  "g": "menachem",
   "names": [
-   "Ari",
-   "Shalom",
-   "Shaina",
-   "Bella"
+   "Shalom"
   ],
-  "r": "ari"
+  "r": "shalom"
  },
  "log": [
+  {
+   "msg": "\ud83c\udfa1 Menachem drew Shalom!",
+   "t": "2026-11-15T03:32:36.150Z",
+   "who": "Live draw"
+  },
+  {
+   "msg": "\ud83c\udfa1 Sara drew Bella!",
+   "t": "2026-11-15T03:32:20.412Z",
+   "who": "Live draw"
+  },
+  {
+   "msg": "\ud83d\ude4b Menachem joined the draw line",
+   "t": "2026-11-15T03:32:04.720Z",
+   "who": "Shimon"
+  },
+  {
+   "msg": "\ud83c\udfa1 Yisroel drew Shaina!",
+   "t": "2026-11-15T03:32:04.506Z",
+   "who": "Live draw"
+  },
+  {
+   "msg": "\ud83d\ude4b Sara joined the draw line",
+   "t": "2026-11-15T03:32:04.085Z",
+   "who": "Shimon"
+  },
+  {
+   "msg": "\ud83d\ude4b Yisroel joined the draw line",
+   "t": "2026-11-15T03:32:03.063Z",
+   "who": "Shimon"
+  },
   {
    "msg": "\ud83c\udfa1 Mika drew Ari!",
    "t": "2026-11-14T23:26:02.240Z",
@@ -999,8 +1029,8 @@
  ],
  "openingDate": "",
  "queue": [],
- "rev": 72,
+ "rev": 78,
  "schema": 2,
  "spinsOpenAt": "2026-11-13T01:00:00.000Z",
- "updatedAt": "2026-11-14T23:26:02.240Z"
+ "updatedAt": "2026-11-15T03:32:36.150Z"
 }
