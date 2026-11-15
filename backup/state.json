@@ -742,6 +742,11 @@
  },
  "log": [
   {
+   "msg": "Set opening day to Sunday, December 6",
+   "t": "2026-11-15T14:54:10.941Z",
+   "who": "Someone"
+  },
+  {
    "msg": "\ud83c\udfa1 Menachem drew Shalom!",
    "t": "2026-11-15T03:32:36.150Z",
    "who": "Live draw"
@@ -1027,10 +1032,10 @@
    "who": "Grok Bot"
   }
  ],
- "openingDate": "",
+ "openingDate": "2026-12-06",
  "queue": [],
- "rev": 78,
+ "rev": 79,
  "schema": 2,
  "spinsOpenAt": "2026-11-13T01:00:00.000Z",
- "updatedAt": "2026-11-15T03:32:36.150Z"
+ "updatedAt": "2026-11-15T14:54:10.941Z"
 }
